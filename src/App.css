@@ -1,42 +1,42 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap');
+
+:root{
+  /* --app-primary-color: #64679c; */
+  --app-primary-color: #9F3C9F;
+  --app-primary-font-color:#262964;
+  --app-primary-color-disabled: #A2A5DB;
+  --app-primary-color-hover: hsl(145, 83%, 23%);
+  --app-secondary-color: hsl(145, 60%, 39%);
+  --app-secondary-color-disabled: hsl(145, 60%, 59%);
+  --app-secondary-color-hover: hsl(145, 83%, 23%);
+
+
+
+  --swiper-navigation-size: 24px;
+  --swiper-theme-color: #9d129d;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+body {
+  margin: 0;
+  font-family: "Woolwich, sans-serif";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+a {
+  color: inherit; /* Inherit the color from the parent */
+  text-decoration: none; /* Remove underline */
 }
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+a:hover{
+  color: inherit; /* Inherit the color from the parent */
+  text-decoration: none; /* Remove underline */
 }

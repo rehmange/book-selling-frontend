@@ -1,35 +1,76 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { lazy, Suspense } from "react";
+import {Route, Routes, BrowserRouter } from "react-router-dom";
+import styled from 'styled-components'
+
+import { Layout } from 'antd';
+
+import NewSell from '~/components/NewSell'
+import Navbar from '~/components/Navbar';
+
+
+
+import FooterSite from "./components/FooterSite";
+import EmailCapture from "./components/EmailCapture";
+
+const { Header, Content, Footer } = Layout;
+const LoadingOverlay = lazy(() => import("./components/LoadingOverlay"));
+const Books = lazy(() => import('./components/Books'));
+const Book = lazy(() => import('./components/Book'));
+const About = lazy(() => import('./components/About'));
+const NoMatch = lazy(() => import('./components/NoMatch'));
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <AppStyled>
+      <EmailCapture/>
+      <NewSell />
+      <BrowserRouter>
+        <Layout>
+          <Header className='headerContainer'>
+            {/* <BrowserRouter> */}
+            <Navbar />
+            {/* </BrowserRouter> */}
+          </Header>
+          <Content className='content'>
+            <Suspense fallback={<LoadingOverlay loaderSize="40px" backgroundColor="white" />}>
+              {/* <BrowserRouter> */}
+              <Routes>
+                <Route>
+                  <Route path="/">
+                    <Route path="books" element={<Books />} />
+                    <Route path="book/:id" element={<Book />} />
+                    <Route path="about" element={<About />} />
+                  </Route>
+                </Route>
+                <Route path="*" element={<NoMatch />} />
+              </Routes>
+              {/* </BrowserRouter> */}
+            </Suspense>
+          </Content>
+          <Footer >
+            <FooterSite />
+            {/* Ant Design ©{new Date().getFullYear()} Created by Ant UED */}
+          </Footer>
+        </Layout>
+      </BrowserRouter>
+    </AppStyled>
   )
 }
 
 export default App
+
+const AppStyled = styled.div`
+position: relative;
+.headerContainer{
+position: sticky;
+top: 38px;
+z-index: 2;
+}
+
+.content{
+  min-height:calc(100vh - 38px - 126px);
+  background-color: #fff;
+}
+
+`
