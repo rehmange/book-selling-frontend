@@ -20,7 +20,8 @@ position: sticky;
 top: 0px;
 z-index: 2;
 .new-sell{
-    background-color: var(--app-primary-color);
+    /* background-color: var(--app-primary-color); */
+    background-color: #87CFEA;
     height:38px;
     color:#fff;
     font-weight: 500;

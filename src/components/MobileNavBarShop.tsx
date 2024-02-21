@@ -27,13 +27,16 @@ export default MobileNavBarShop
 
 
 const MobileNavBarShopStyled = styled.div`
+border-top:black 1px solid ;
     box-shadow: 0px 4px 6px -3px rgba(0, 0, 0, 0.1), 0px 2px 4px -2px rgba(0, 0, 0, 0.06);
     height: 200px;
-    background-color: #9498d9;
+    /* background-color: #9498d9; */
+    background-color: #fff;
     line-height: normal;
     padding: 8px 10px;
     font-weight: 500;
-    color:#fff;
+    /* color:#fff; */
+    color:#1E90FF;
     .mobile-nav-product{
         padding: 8px 20px;
     }

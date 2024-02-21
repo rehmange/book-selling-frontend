@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react"
 import axios from "axios";
-import { Modal, ConfigProvider, Row, Col, Form, Input, Button ,message} from 'antd';
+import { Modal, ConfigProvider, Row, Col, Form, Input, Button, message } from 'antd';
 import styled from 'styled-components';
-import { jellyFish } from "~/components/globalImges";
+import { logo } from "~/components/globalImges";
 
-const EmailCapture = () => {
+const EmailCapture = ({ open, setOpen }: any) => {
     const [form] = Form.useForm();
 
-    const [open, setOpen] = useState(false)
+
+    // const [open, setOpen] = useState(isOpen)
 
     const onFinish = async (e: any) => {
         try {
@@ -18,7 +18,7 @@ const EmailCapture = () => {
 
         } catch (error) {
             message.error("Internal Server Error!")
-            console.log(error,'error')
+            console.log(error, 'error')
         }
 
         setOpen(false)
@@ -28,20 +28,23 @@ const EmailCapture = () => {
     };
 
     const handleCancel = () => {
+        console.log('Clicked cancel button');
         setOpen(false)
     }
 
-    useEffect(() => {
-        setOpen(true)
-    }, [])
+    // useEffect(() => {
+    //     setOpen(true)
+    // }, [])
     return (
 
         <ConfigProvider
             theme={{
                 components: {
                     Modal: {
-                        headerBg: "#ffa9be",
-                        contentBg: "#f6bcca",
+                        // headerBg: "#ffa9be",
+                        // contentBg: "#f6bcca",
+                        headerBg: "#87CEFA",
+                        contentBg: "#87CEFA",
                         colorText: "var(--app-primary-font-color)",
                         // titleColor: "#02A1DB;",
                         titleFontSize: 20,
@@ -56,10 +59,10 @@ const EmailCapture = () => {
                         <span className="email-title">Get started with Jellyfish Press </span>
                     </Row>
                     <Row justify={"center"} style={{ marginTop: "30px" }}>
-                        <img src={jellyFish} width={"50%"}></img>
+                        <img src={logo} width={"60%"}></img>
                     </Row>
                     <Row justify={"center"} style={{ marginTop: "30px" }}>
-                        <Col className='email-text'>Unlock a world of storytelling! Drop your email to score complimentary audio editions of all our books and enjoy VIP access to our latest releases.</Col>
+                        <Col className='email-text'>Unlock a world of storytelling! Drop your email to score complimentary audio editions of all our books and enjoy VIP access to our latest releases and news.</Col>
                     </Row>
 
                     <Form form={form} name="advanced_search"
@@ -97,19 +100,41 @@ export default EmailCapture
 const EmailCaptureStyled = styled.div`
 
 .email-title{
-    color: #016285;
-    font-family: "'Protest Riot', sans-serif";
-    font-size: 26px;
-    text-shadow: rgb(144, 54, 144) 0px 3px 4px
+    /* color: #016285; */
+    /* color: #FFF;
+
+    */
+    color: white; /* Inner color */
+    -webkit-text-fill-color: white; /* For Safari */
+    -webkit-text-stroke-width: 1px; /* Width of the outline */
+    -webkit-text-stroke-color: #FF00FF; /* Color of the outline */
+    text-fill-color: white; /* For Firefox */
+    text-stroke-width: 1px; /* Width of the outline */
+    text-stroke-color: #FF00FF; /* Color of the outline */
+    /* font-family: "'Protest Riot', sans-serif"; */
+    font-size: 23px;
+    font-weight: 800;
+    /* text-shadow: rgb(144, 54, 144) 0px 3px 4px */
 }
 
 .email-text{
-    font-size: 14px;
+    /* font-size: 14px;
     font-weight: 800;
-    color:#0f4f81;
+    color:#0f4f81; */
+    text-align: center;
+    font-size: 23px;
+    font-weight: 800;
+    color: white; /* Inner color */
+    -webkit-text-fill-color: white; /* For Safari */
+    -webkit-text-stroke-width: 1px; /* Width of the outline */
+    -webkit-text-stroke-color: #FF00FF; /* Color of the outline */
+    text-fill-color: white; /* For Firefox */
+    text-stroke-width: .5px; /* Width of the outline */
+    text-stroke-color: #FF00FF; /* Color of the outline */
 }
 .signUpBtn {
-    background: linear-gradient(to right, #04A0DB, #A13BA1);
+    /* background: linear-gradient(to right, #04A0DB, #A13BA1); */
+    background: linear-gradient(to right, #04A0DB, #FF00FF);
     border: none;
     color: white;
     // padding: 10px 20px;
@@ -117,7 +142,7 @@ const EmailCaptureStyled = styled.div`
     transition: background-color 0.3s, color 0.3s;
   }
 .signUpBtn:hover{
-    background: linear-gradient(to right, #A13BA1, #04A0DB) !important;
+    background: linear-gradient(to right, #FF00FF, #04A0DB) !important;
     font-weight: 600;
     color:#fff !important;
 }

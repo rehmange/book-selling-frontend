@@ -27,27 +27,45 @@ const Navbar = () => {
         <>
             <NavbarStyled>
                 <Row className='header'>
-                    <Row style={{ width: '100%' }} justify={"space-between"}>
+                    <Row style={{ width: '100%' }} justify={"space-between"} >
                         {isTablet ? <>
-                            <Col xs={8} className='logo' style={{ paddingLeft: "10px" }}>
-                                {subNavbar || mobileShop ? <CloseOutlined onClick={() => { setSubNavbar(false); setMobileShop(false) }} /> : <MenuOutlined onClick={() => setSubNavbar(!subNavbar)} />}
+                            <Col xs={8} className='logo'  >
+                                <Row style={{ height: "100%", paddingLeft: "10px" }}>
+                                    {subNavbar || mobileShop ? <CloseOutlined onClick={() => { setSubNavbar(false); setMobileShop(false) }} 
+                                      style={{    color:"#1E90FF"}}
+                                    /> : <MenuOutlined onClick={() => setSubNavbar(!subNavbar)} 
+                                    style={{    color:"#1E90FF"}}
+                                    />}
+                                </Row>
+
                             </Col>
-                            <Col xs={8} ><Row style={{ width: "100%", height: "100%" }} align={'middle'} justify={'center'}>
-                                <Link to='/'><Row onClick={closeNavBar}> <img className='logo' src={logo} width={'100px'} /></Row> </Link>
+                            <Col xs={8}>
+                                <Row align={'middle'} style={{ height: "100%" }} justify={"center"} className='nav-Line'>
+                                    Dive into Depths, Find Strength & Brilliance
+                                </Row>
+
+                            </Col>
+                            <Col xs={8} ><Row style={{ width: "100%", height: "100%" }} align={'middle'} justify={'end'}>
+                                <Link to='/'><Row onClick={closeNavBar} style={{ padding: "5px 0px" }}> <img className='logo' src={logo} width={'50px'} /></Row> </Link>
                             </Row></Col>
-                            <Col xs={8}></Col>
                         </> : <>
                             <Col md={8} ><Row style={{ width: "100%", height: "100%" }} align={'middle'} justify={"start"} >
                                 <Link to='/'>
-                                    <Row onClick={closeNavBar}>
-                                        <img className='logo' src={logo} width={'100px'} />
+                                    <Row onClick={closeNavBar} style={{ padding: "5px 0px" }}>
+                                        <img className='logo' src={logo} width={'85px'} />
                                     </Row>
                                 </Link>
                             </Row>
 
                             </Col>
-                            <Col md={16}>
-                                <Row gutter={50} style={{ marginLeft: "0px", marginRight: "0px" }}>
+                            <Col md={8}>
+                                <Row align={'middle'} style={{ height: "100%" }} justify={"center"} className='nav-Line'>
+                                    Dive into Depths, Find Strength & Brilliance
+                                </Row>
+
+                            </Col>
+                            <Col md={8}>
+                                <Row gutter={50} style={{ marginLeft: "0px", marginRight: "0px", width: "100%", height: "100%" }} align={'middle'} justify={"end"} >
                                     <Col className='menu' onClick={() => setSubNavbar(!subNavbar)}>
                                         Shop <CaretDownOutlined />
                                     </Col>
@@ -79,14 +97,34 @@ box-shadow: 0px 4px 6px -3px rgba(0, 0, 0, 0.1), 0px 2px 4px -2px rgba(0, 0, 0, 
     margin:0 auto;
     justify-content: space-between;
     align-items: center;
+    /* position: fixed; */
   }
 .logo{
     cursor: pointer;
+
   }
   .menu{
-    color: #9d129d;
+    /* color: #9d129d; */
+    /* color: #87CFEA; */
+    color:#1E90FF;
     font-size: 15px;
     font-weight: 800;
     cursor: pointer;
+  }
+  .nav-Line{
+    font-family: 'Pacifico';
+    font-size: 17px;
+    color:#1E90FF;
+    /* color: #87CFEA; */
+    font-weight: 800;
+  }
+
+  @media screen and (max-width: 768px) {
+    .nav-Line{
+    font-size: 12px;
+  }
+  .logo{
+    padding-right: 5px;
+  }
   }
 `

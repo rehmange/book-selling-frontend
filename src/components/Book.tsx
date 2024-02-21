@@ -98,7 +98,8 @@ export default Book;
 
 const BooksStyled = styled.div`
 padding-bottom:20px;
-  background-color: #fff;
+
+  /* background-color: #fff; */
   .book-container {
     max-width: 992px;
     margin: 0 auto;
@@ -107,7 +108,8 @@ padding-bottom:20px;
   .book-title {
     padding: 25px 0px;
     width: 100%;
-    color: #02a1db;
+    /* color: #02a1db; */
+    color: #fafafa;
     font-weight: 500;
     font-size: 45px;
     font-family: "Protest Riot", sans-serif;
@@ -116,7 +118,7 @@ padding-bottom:20px;
 
   .productImg {
     // background: #f4f4f4;
-    background: #ffc6d4;
+    background: #fff;
     height: 400px;
   }
 
@@ -144,18 +146,21 @@ padding-bottom:20px;
   .book-description {
     font-size: 18px;
     font-weight: 600;
-    color: #0f4f81;
+    /* color: #0f4f81; */
+    color: #fff;
   }
   .book-i-price {
     font-size: 18px;
-    color: #0f4f81;
+    /* color: #0f4f81; */
+    color: #fff;
     margin-top: 20px;
   }
 
   .buy-text {
     font-size: 18px;
     font-weight: 800;
-    color: #0f4f81;
+    /* color: #0f4f81; */
+    color: #fff;
     margin-top: 20px;
   }
 
@@ -166,7 +171,8 @@ padding-bottom:20px;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-    background: linear-gradient(to right, #04a0db, #a13ba1);
+    /* background: linear-gradient(to right, #04a0db, #a13ba1); */
+    background: linear-gradient(to right, #04A0DB, #FF00FF);
     border: none;
     color: white;
     font-weight: 500;
@@ -174,7 +180,8 @@ padding-bottom:20px;
     transition: background-color 0.3s, color 0.3s;
   }
   .buyBtn:hover {
-    background: linear-gradient(to right, #a13ba1, #04a0db) !important;
+    /* background: linear-gradient(to right, #a13ba1, #04a0db) !important; */
+    background: linear-gradient(to right, #FF00FF, #04A0DB) !important;
     font-weight: 600;
     color: #fff !important;
   }

@@ -35,13 +35,16 @@ const SubNavbar = ({ mobileShop, setMobileShop, setSubNavbar }: any) => {
 
 export default SubNavbar
 const SubNavbarStyled = styled.div`
+border-top:black 1px solid ;
 box-shadow: 0px 4px 6px -3px rgba(0, 0, 0, 0.1), 0px 2px 4px -2px rgba(0, 0, 0, 0.06);
 line-height: normal;
 height: 200px;
-background-color:#f8d7df;
+background-color:#fff;
 padding: 20px 0px;
 font-weight: 500;
-color:#9d129d;
+color:#1E90FF;
+position: absolute;
+width: 100%;
 .sub-navbar-container{
     max-width:992px;
     margin:0 auto;
