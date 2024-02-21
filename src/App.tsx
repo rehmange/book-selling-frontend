@@ -1,7 +1,7 @@
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import styled from 'styled-components'
-
+import axios from "axios";
 import Navbar from '~/components/Navbar';
 import { background } from '~/components/globalImges'
 
@@ -20,6 +20,22 @@ const NoMatch = lazy(() => import('./components/NoMatch'));
 
 function App() {
   const [open, setOpen] = useState(true)
+  const [aboutData, setAboutData] = useState({
+    Title: "Title",
+    Desc1: "Desc1",
+    Desc2: "desc2",
+    ImageUrl: "image",
+  })
+
+  useEffect(() => {
+    const getAbout = async () => {
+      const { data } = await axios.get(`${import.meta.env.VITE_SERVER_URL}/about`)
+      setAboutData(data?.data)
+    }
+    getAbout()
+  }, [])
+
+
   return (
     <AppStyled>
       <EmailCapture open={open} setOpen={setOpen} />
@@ -41,7 +57,7 @@ function App() {
                   <Route path="" element={<Home />} />
                   <Route path="books" element={<Books />} />
                   <Route path="book/:id" element={<Book />} />
-                  <Route path="about" element={<About />} />
+                  <Route path="about" element={<About aboutData={aboutData} />} />
                 </Route>
               </Route>
               <Route path="*" element={<NoMatch />} />
@@ -77,7 +93,7 @@ z-index: 2;
 }
 
 .content{
-  min-height: calc(100vh - 290px);
+  min-height: calc(100vh - 207px);
     background-image: url(${background});
     background-size: cover;
     background-repeat: no-repeat;

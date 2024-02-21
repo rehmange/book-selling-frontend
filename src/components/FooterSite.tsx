@@ -1,5 +1,5 @@
 import { Button, Col, Row } from 'antd'
-import { /* FacebookOutlined, */ YoutubeOutlined, TikTokOutlined, PinterestOutlined, InstagramOutlined, WhatsAppOutlined, LinkedinOutlined, TwitterOutlined, ReadOutlined, /* WarningOutlined */ } from '@ant-design/icons'
+import { /* FacebookOutlined, */ YoutubeOutlined, TikTokOutlined, PinterestOutlined, InstagramOutlined, WhatsAppOutlined, LinkedinOutlined, XOutlined, ReadOutlined, /* WarningOutlined */ } from '@ant-design/icons'
 import styled from 'styled-components'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
@@ -35,7 +35,7 @@ const FooterSite = () => {
     //         case "linkedin":
     //             return <LinkedinOutlined className='social-icon-img' />
     //         case "twitter":
-    //             return <TwitterOutlined className='social-icon-img' />
+    //             return <XOutlined className='social-icon-img' />
     //         case "docs":
     //             return <ReadOutlined className='social-icon-img' />
     //         default:
@@ -46,28 +46,28 @@ const FooterSite = () => {
     console.log(links, "Links")
     return (
         <>
-                <EmailCapture open={open} setOpen={setOpen}/>
-    
-        <FooterSiteStyled>
-            <Row className="footer-container" justify={{ xs: 'center', sm: 'center', md: 'space-between' }}  align={'middle'}>
-                {!isTablet && <Col md={8} xs={24} className='footer-left-text'>© {new Date().getFullYear()} JellyFish Press, Inc.</Col>}
-                {isTablet ? <>
-                    <Col>
-                        <Row>
-                            <Col ><div className="email-icon">
-                                <img src={email} className='email-pic' alt="Email Icon" />
-                                <span className="icon-text">Exclusive Offers & News</span>
-                                <span className="icon-text-signup">SIGN UP TODAY!</span>
-                                <Button className='signUpBtn-email' onClick={() => setOpen(!open)} >
-                                    Sign Up
-                                </Button>
-                            </div></Col>
-                        </Row>
-                    </Col>
-                    <Col md={12} xs={24} className='footer-left-text'>© {new Date().getFullYear()} JellyFish Press, Inc.</Col>
-                    <Col md={12} xs={24} className='social-icon-container'>
-                        <Row gutter={20} style={{ marginLeft: "0px", marginRight: "0px" }}>
-                            {/* {links?.map((item: any) => {
+            <EmailCapture open={open} setOpen={setOpen} />
+
+            <FooterSiteStyled>
+                <Row className="footer-container" justify={{ xs: 'center', sm: 'center', md: 'space-between' }} align={'middle'}>
+                    {!isTablet && <Col md={8} xs={24} className='footer-left-text'>© {new Date().getFullYear()} JellyFish Press, Inc.</Col>}
+                    {isTablet ? <>
+                        <Col>
+                            <Row>
+                                <Col ><div className="email-icon">
+                                    <img src={email} className='email-pic' alt="Email Icon" />
+                                    <span className="icon-text">Exclusive Offers & News</span>
+                                    <span className="icon-text-signup">SIGN UP TODAY!</span>
+                                    <Button className='signUpBtn-email' onClick={() => setOpen(!open)} >
+                                        Sign Up
+                                    </Button>
+                                </div></Col>
+                            </Row>
+                        </Col>
+                        <Col md={12} xs={24} className='footer-left-text'>© {new Date().getFullYear()} JellyFish Press, Inc.</Col>
+                        <Col md={12} xs={24} className='social-icon-container'>
+                            <Row gutter={20} style={{ marginLeft: "0px", marginRight: "0px" }}>
+                                {/* {links?.map((item: any) => {
                                             return <Col key={item?.SocialLinkId} className='social-icon'>
                                                 <a href={item?.Url} target='_blank'>
                                                     {socialIcon(item?.Type)}
@@ -75,22 +75,22 @@ const FooterSite = () => {
                                             </Col>
                                         })} */}
 
-                            <Col className='social-icon'><YoutubeOutlined className='social-icon-img' /></Col>
-                            <Col className='social-icon'><InstagramOutlined className='social-icon-img' /></Col>
-                            <Col className='social-icon'><PinterestOutlined className='social-icon-img' /></Col>
-                            <Col className='social-icon'><TikTokOutlined className='social-icon-img' /></Col>
-                            <Col className='social-icon'><WhatsAppOutlined className='social-icon-img' /></Col>
-                            <Col className='social-icon'><LinkedinOutlined className='social-icon-img' /></Col>
-                            <Col className='social-icon'><TwitterOutlined className='social-icon-img' /></Col>
-                            <Col className='social-icon'><ReadOutlined className='social-icon-img' /></Col>
+                                <Col className='social-icon'><YoutubeOutlined className='social-icon-img' /></Col>
+                                <Col className='social-icon'><InstagramOutlined className='social-icon-img' /></Col>
+                                <Col className='social-icon'><PinterestOutlined className='social-icon-img' /></Col>
+                                <Col className='social-icon'><TikTokOutlined className='social-icon-img' /></Col>
+                                <Col className='social-icon'><WhatsAppOutlined className='social-icon-img' /></Col>
+                                <Col className='social-icon'><LinkedinOutlined className='social-icon-img' /></Col>
+                                <Col className='social-icon'><XOutlined className='social-icon-img' /></Col>
+                                <Col className='social-icon'><ReadOutlined className='social-icon-img' /></Col>
 
-                        </Row>
-                    </Col>
+                            </Row>
+                        </Col>
 
-                </>
-                    : <> <Col md={9}>
-                        <Row gutter={20} style={{ marginLeft: "0px", marginRight: "0px" }}>
-                            {/* {links?.map((item: any) => {
+                    </>
+                        : <> <Col md={16}>
+                            <Row gutter={20} style={{ marginLeft: "0px", marginRight: "0px" }} justify={"end"}>
+                                {/* {links?.map((item: any) => {
                             return <Col key={item?.SocialLinkId} className='social-icon'>
                                 <a href={item?.Url} target='_blank'>
                                     {socialIcon(item?.Type)}
@@ -98,18 +98,28 @@ const FooterSite = () => {
                             </Col>
                         })} */}
 
-                            <Col className='social-icon'><YoutubeOutlined className='social-icon-img' /></Col>
-                            <Col className='social-icon'><InstagramOutlined className='social-icon-img' /></Col>
-                            <Col className='social-icon'><PinterestOutlined className='social-icon-img' /></Col>
-                            <Col className='social-icon'><TikTokOutlined className='social-icon-img' /></Col>
-                            <Col className='social-icon'><WhatsAppOutlined className='social-icon-img' /></Col>
-                            <Col className='social-icon'><LinkedinOutlined className='social-icon-img' /></Col>
-                            <Col className='social-icon'><TwitterOutlined className='social-icon-img' /></Col>
-                            <Col className='social-icon'><ReadOutlined className='social-icon-img' /></Col>
-
-                        </Row>
-                    </Col>
-                        <Col md={7}>
+                                <Col className='social-icon'><YoutubeOutlined className='social-icon-img' /></Col>
+                                <Col className='social-icon'><InstagramOutlined className='social-icon-img' /></Col>
+                                <Col className='social-icon'><PinterestOutlined className='social-icon-img' /></Col>
+                                <Col className='social-icon'><TikTokOutlined className='social-icon-img' /></Col>
+                                <Col className='social-icon'><WhatsAppOutlined className='social-icon-img' /></Col>
+                                <Col className='social-icon'><LinkedinOutlined className='social-icon-img' /></Col>
+                                <Col className='social-icon'><XOutlined className='social-icon-img' /></Col>
+                                <Col className='social-icon'><ReadOutlined className='social-icon-img' /></Col>
+                                <Col style={{ paddingLeft: "36px", paddingRight: "50px" }}>
+                                    <Row justify={"end"} ><div className="email-icon">
+                                        <img src={email} className='email-pic' alt="Email Icon" />
+                                        <span className="icon-text">Exclusive Offers & News</span>
+                                        <span className="icon-text-signup">SIGN UP TODAY!</span>
+                                        <Button className='signUpBtn-email' onClick={() => setOpen(!open)} >
+                                            Sign Up
+                                        </Button>
+                                    </div>
+                                    </Row>
+                                </Col>
+                            </Row>
+                        </Col>
+                            {/* <Col md={7}>
                             <Row justify={"end"} ><div className="email-icon">
                                 <img src={email} className='email-pic' alt="Email Icon" />
                                 <span className="icon-text">Exclusive Offers & News</span>
@@ -119,15 +129,15 @@ const FooterSite = () => {
                                 </Button>
                             </div>
                             </Row>
-                        </Col>
-                    </>
-                }
+                        </Col> */}
+                        </>
+                    }
 
 
 
 
-            </Row>
-        </FooterSiteStyled >
+                </Row>
+            </FooterSiteStyled >
         </>
     )
 }
@@ -140,12 +150,14 @@ const FooterSiteStyled = styled.div`
 /* position: absolute; */
     width: 100%;
 background-color:#87CFEA !important;
+
 .footer-container{
     max-width:992px;
     margin:0 auto;
     /* display: flex; */
 
     min-height: 62px;
+    overflow: hidden;
     /* padding:20px 0px; */
 }
 .footer-left-text{
@@ -161,10 +173,10 @@ background-color:#87CFEA !important;
     cursor:pointer;
     font-size:15px;
     transition: all 0.25s cubic-bezier(0.42, 0, 0.58, 1) 0s;
-    
+
 }
 .social-icon:hover{
-    transform: scale(1.2); /* Example transform on hover */
+    transform: scale(1.1); /* Example transform on hover */
 }
 .social-icon-img{
     color:#FF00FF;
@@ -187,7 +199,7 @@ background-color:#87CFEA !important;
 
 .icon-text {
     font-family: cursive;
-    font-size: 16px;
+    font-size: 14px;
     font-style: normal;
     font-variant-caps: normal;
     font-variant-east-asian: normal;
@@ -199,9 +211,11 @@ background-color:#87CFEA !important;
     /* color:#FF00FF; */
     width: max-content;
     position: absolute;
-    bottom: 70px;
+    bottom: 76px;
     left: 50%;
     transform: translateX(-50%);
+    border: #FF00FF 1px solid;
+    padding: 1px;
 }
 
 .icon-text-signup{
@@ -218,16 +232,18 @@ background-color:#87CFEA !important;
     /* color:#1E90FF; */
     width: max-content;
     position: absolute;
-    bottom: 49px;
+    bottom: 46px;
     left: 50%;
     transform: translateX(-50%);
-  
+    border: #FF00FF 1px solid;
+    /* border-top: 0px; */
+    padding: 1px;
 }
 
 .signUpBtn-email {
 
     position: absolute;
-  bottom: 17px; 
+  bottom: 13px; 
   left: 50%;
   transform: translateX(-50%);
 
@@ -270,5 +286,15 @@ background-color:#87CFEA !important;
     display: inline-block;
     /* width: 300px; */
 }
+.icon-text {
+    font-size: 11px;
+    bottom: 74px;
+}
+
+.icon-text-signup{
+    font-size: 16px;
+    bottom: 46px;
+}
+
 }
 `

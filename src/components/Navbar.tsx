@@ -31,10 +31,10 @@ const Navbar = () => {
                         {isTablet ? <>
                             <Col xs={8} className='logo'  >
                                 <Row style={{ height: "100%", paddingLeft: "10px" }}>
-                                    {subNavbar || mobileShop ? <CloseOutlined onClick={() => { setSubNavbar(false); setMobileShop(false) }} 
-                                      style={{    color:"#1E90FF"}}
-                                    /> : <MenuOutlined onClick={() => setSubNavbar(!subNavbar)} 
-                                    style={{    color:"#1E90FF"}}
+                                    {subNavbar || mobileShop ? <CloseOutlined onClick={() => { setSubNavbar(false); setMobileShop(false) }}
+                                        style={{ color: "#1E90FF" }}
+                                    /> : <MenuOutlined onClick={() => setSubNavbar(!subNavbar)}
+                                        style={{ color: "#1E90FF" }}
                                     />}
                                 </Row>
 
@@ -49,7 +49,7 @@ const Navbar = () => {
                                 <Link to='/'><Row onClick={closeNavBar} style={{ padding: "5px 0px" }}> <img className='logo' src={logo} width={'50px'} /></Row> </Link>
                             </Row></Col>
                         </> : <>
-                            <Col md={8} ><Row style={{ width: "100%", height: "100%" }} align={'middle'} justify={"start"} >
+                            <Col md={4} ><Row style={{ width: "100%", height: "100%" }} align={'middle'} justify={"start"} >
                                 <Link to='/'>
                                     <Row onClick={closeNavBar} style={{ padding: "5px 0px" }}>
                                         <img className='logo' src={logo} width={'85px'} />
@@ -58,13 +58,13 @@ const Navbar = () => {
                             </Row>
 
                             </Col>
-                            <Col md={8}>
+                            <Col md={14}>
                                 <Row align={'middle'} style={{ height: "100%" }} justify={"center"} className='nav-Line'>
                                     Dive into Depths, Find Strength & Brilliance
                                 </Row>
 
                             </Col>
-                            <Col md={8}>
+                            <Col md={6}>
                                 <Row gutter={50} style={{ marginLeft: "0px", marginRight: "0px", width: "100%", height: "100%" }} align={'middle'} justify={"end"} >
                                     <Col className='menu' onClick={() => setSubNavbar(!subNavbar)}>
                                         Shop <CaretDownOutlined />
@@ -113,10 +113,11 @@ box-shadow: 0px 4px 6px -3px rgba(0, 0, 0, 0.1), 0px 2px 4px -2px rgba(0, 0, 0, 
   }
   .nav-Line{
     font-family: 'Pacifico';
-    font-size: 17px;
+    font-size: 28px;
     color:#1E90FF;
     /* color: #87CFEA; */
     font-weight: 800;
+    padding-left: 30px;
   }
 
   @media screen and (max-width: 768px) {
