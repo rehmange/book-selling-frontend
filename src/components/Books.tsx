@@ -2,177 +2,43 @@ import styled from 'styled-components'
 import { Row, Col } from 'antd'
 // import Browse from './Browse'
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 const Books = () => {
+    const [booksData, setBooksData] = useState([])
+
+    useEffect(() => {
+        const getBooks = async () => {
+            const { data } = await axios.get(`${import.meta.env.VITE_SERVER_URL}/book`)
+            setBooksData(data?.data)
+        }
+        getBooks()
+    }, [])
     return (
         <BooksStyled>
             <Row className='books-Container'>
-                {/* <Col xs={24} md={6} style={{ paddingTop: "40px" }}>
+                <Row className='books-title' justify={"center"} align={"middle"}>
+                    Books
+                </Row>
+                <Row style={{ width: '100%', marginLeft: "0px", marginRight: "0px", paddingBottom: "20px" }} gutter={[{ xs: 0, sm: 0, md: 15, lg: 20 }, 20]} >
+                    {
+                        booksData?.map((book: any) => {
+                            return <Col md={8} xs={24} >
 
-                    <Browse />
-                </Col>
-                <Col xs={24} md={18}>    */}
-                {/* <Row > */}
-
-                    <Row className='books-title' justify={"center"} align={"middle"}>
-                        Books
-                    </Row>
-                    <Row style={{ width: '100%', marginLeft: "0px", marginRight: "0px" }} gutter={[{ xs: 0, sm: 0, md: 15, lg: 20 }, 20]} >
-
-                        {/* <Col md={8} xs={24} className='product-container'>
-                            <Link to={`/book/Money-Matters`}>
-                                <Row>
+                                <Row justify={"center"}>
                                     <Col span={24} className='productImg'>
                                         <Row justify={"center"} align={"middle"} style={{ height: '100%' }}>
-                                            <img src='https://explore.rebelgirls.com/wp-content/uploads/2022/06/Board-Book_Cover-1.png' className='bookImg' />
+                                            <img src={book?.ImageLink?.split(",")?.at(0)} className='bookImg' />
                                         </Row>
                                     </Col>
-                                    <Col span={24} className='book-name'>Money Matters</Col>
-                                    <Col span={24} className='book-price'><strong>MSRP</strong>: $12.99 | <strong>Age Range</strong>: 8–12</Col>
+                                    <Col span={24} className='book-name'><span className='book-name-title'>{book?.Title}</span></Col>
+                                    <Col span={24} className='book-price'><strong>MSRP</strong>: ${book?.Price} | <Link className='book-price product-container' to={`/book/${book?.BookID}/${book?.Title?.replaceAll(" ", "-")}`}>More Details</Link></Col>
                                 </Row>
-                            </Link>
-                        </Col> */}
 
-
-                        {/* <Col md={8} xs={24} className='product-container'>
-                            <Link to={`/book/Money-Matters`}>
-                                <Row>
-                                    <Col span={24} className='productImg'>
-                                        <Row justify={"center"} align={"middle"} style={{ height: '100%' }}>
-                                            <img src='https://explore.rebelgirls.com/wp-content/uploads/2022/06/Board-Book_Cover-1.png' className='bookImg' />
-                                        </Row>
-                                    </Col>
-                                    <Col span={24} className='book-name'>Money Matters</Col>
-                                    <Col span={24} className='book-price'><strong>MSRP</strong>: $12.99 | <strong>Age Range</strong>: 8–12</Col>
-                                </Row>
-                            </Link>
-                        </Col>
-
-
-                        <Col md={8} xs={24} className='product-container'>
-                            <Link to={`/book/Money-Matters`}>
-                                <Row>
-                                    <Col span={24} className='productImg'>
-                                        <Row justify={"center"} align={"middle"} style={{ height: '100%' }}>
-                                            <img src='https://explore.rebelgirls.com/wp-content/uploads/2022/06/Board-Book_Cover-1.png' className='bookImg' />
-                                        </Row>
-                                    </Col>
-                                    <Col span={24} className='book-name'>Money Matters</Col>
-                                    <Col span={24} className='book-price'><strong>MSRP</strong>: $12.99 | <strong>Age Range</strong>: 8–12</Col>
-                                </Row>
-                            </Link>
-                        </Col>
-
-
-                        <Col md={8} xs={24} className='product-container'>
-                            <Link to={`/book/Money-Matters`}>
-                                <Row>
-                                    <Col span={24} className='productImg'>
-                                        <Row justify={"center"} align={"middle"} style={{ height: '100%' }}>
-                                            <img src='https://explore.rebelgirls.com/wp-content/uploads/2022/06/Board-Book_Cover-1.png' className='bookImg' />
-                                        </Row>
-                                    </Col>
-                                    <Col span={24} className='book-name'>Money Matters</Col>
-                                    <Col span={24} className='book-price'><strong>MSRP</strong>: $12.99 | <strong>Age Range</strong>: 8–12</Col>
-                                </Row>
-                            </Link>
-                        </Col>
-
-
-                        <Col md={8} xs={24} className='product-container'>
-                            <Link to={`/book/Money-Matters`}>
-                                <Row>
-                                    <Col span={24} className='productImg'>
-                                        <Row justify={"center"} align={"middle"} style={{ height: '100%' }}>
-                                            <img src='https://explore.rebelgirls.com/wp-content/uploads/2022/06/Board-Book_Cover-1.png' className='bookImg' />
-                                        </Row>
-                                    </Col>
-                                    <Col span={24} className='book-name'>Money Matters</Col>
-                                    <Col span={24} className='book-price'><strong>MSRP</strong>: $12.99 | <strong>Age Range</strong>: 8–12</Col>
-                                </Row>
-                            </Link>
-                        </Col>
-
-
-                        <Col md={8} xs={24} className='product-container'>
-                            <Link to={`/book/Money-Matters`}>
-                                <Row>
-                                    <Col span={24} className='productImg'>
-                                        <Row justify={"center"} align={"middle"} style={{ height: '100%' }}>
-                                            <img src='https://explore.rebelgirls.com/wp-content/uploads/2022/06/Board-Book_Cover-1.png' className='bookImg' />
-                                        </Row>
-                                    </Col>
-                                    <Col span={24} className='book-name'>Money Matters</Col>
-                                    <Col span={24} className='book-price'><strong>MSRP</strong>: $12.99 | <strong>Age Range</strong>: 8–12</Col>
-                                </Row>
-                            </Link>
-                        </Col>
-
-
-                        <Col md={8} xs={24} className='product-container'>
-                            <Link to={`/book/Money-Matters`}>
-                                <Row>
-                                    <Col span={24} className='productImg'>
-                                        <Row justify={"center"} align={"middle"} style={{ height: '100%' }}>
-                                            <img src='https://explore.rebelgirls.com/wp-content/uploads/2022/06/Board-Book_Cover-1.png' className='bookImg' />
-                                        </Row>
-                                    </Col>
-                                    <Col span={24} className='book-name'>Money Matters</Col>
-                                    <Col span={24} className='book-price'><strong>MSRP</strong>: $12.99 | <strong>Age Range</strong>: 8–12</Col>
-                                </Row>
-                            </Link>
-                        </Col>
-
-
-                        <Col md={8} xs={24} className='product-container'>
-                            <Link to={`/book/Money-Matters`}>
-                                <Row>
-                                    <Col span={24} className='productImg'>
-                                        <Row justify={"center"} align={"middle"} style={{ height: '100%' }}>
-                                            <img src='https://explore.rebelgirls.com/wp-content/uploads/2022/06/Board-Book_Cover-1.png' className='bookImg' />
-                                        </Row>
-                                    </Col>
-                                    <Col span={24} className='book-name'>Money Matters</Col>
-                                    <Col span={24} className='book-price'><strong>MSRP</strong>: $12.99 | <strong>Age Range</strong>: 8–12</Col>
-                                </Row>
-                            </Link>
-                        </Col>
-
-
-                        <Col md={8} xs={24} className='product-container'>
-                            <Link to={`/book/Money-Matters`}>
-                                <Row>
-                                    <Col span={24} className='productImg'>
-                                        <Row justify={"center"} align={"middle"} style={{ height: '100%' }}>
-                                            <img src='https://explore.rebelgirls.com/wp-content/uploads/2022/06/Board-Book_Cover-1.png' className='bookImg' />
-                                        </Row>
-                                    </Col>
-                                    <Col span={24} className='book-name'>Money Matters</Col>
-                                    <Col span={24} className='book-price'><strong>MSRP</strong>: $12.99 | <strong>Age Range</strong>: 8–12</Col>
-                                </Row>
-                            </Link>
-                        </Col>
-
-
-                        <Col md={8} xs={24} className='product-container'>
-                            <Link to={`/book/Money-Matters`}>
-                                <Row>
-                                    <Col span={24} className='productImg'>
-                                        <Row justify={"center"} align={"middle"} style={{ height: '100%' }}>
-                                            <img src='https://explore.rebelgirls.com/wp-content/uploads/2022/06/Board-Book_Cover-1.png' className='bookImg' />
-                                        </Row>
-                                    </Col>
-                                    <Col span={24} className='book-name'>Money Matters</Col>
-                                    <Col span={24} className='book-price'><strong>MSRP</strong>: $12.99 | <strong>Age Range</strong>: 8–12</Col>
-                                </Row>
-                            </Link>
-                        </Col> */}
-
-
-
-
-                    </Row>
-                {/* </Row> */}
-                {/* </Col> */}
+                            </Col>
+                        })
+                    }
+                </Row>
             </Row>
 
         </BooksStyled>
@@ -190,40 +56,70 @@ const BooksStyled = styled.div`
 padding: 25px 0px;
 width: 100% !important;
 color:#fafafa;
-font-weight: 500;
+font-weight: 900;
 font-size: 70px;
 font-family: 'Protest Riot', sans-serif;
-text-shadow: 0px 5px 4px rgb(144 54 144)
+/* text-shadow: 0px 5px 4px rgb(144 54 144); */
+
+color: white;
+    -webkit-text-fill-color: white; 
+    -webkit-text-stroke-width: 1px; 
+    -webkit-text-stroke-color: #FF00FF; 
+    text-fill-color: white; 
+    text-stroke-width: .5px;
+    text-stroke-color: #FF00FF; 
 }
 
 .productImg{
-    background:#fff;
+    background: #87cefa;
+    border-radius: 8px;
     height: 260px;
 }
 
 .book-name{
     margin-top: 5px;
-    background: white;
-    font-weight: 500;
-    color: #ff00ff;
+  
+    background: #87cefa;
+    border-radius: 8px 8px 0px 0px;
+
+    padding-left:8px;
+    
+}
+
+.book-name-title{
     font-size: 22px;
-padding-left:8px;
+    font-weight: 900;
+    -webkit-text-fill-color: white; 
+    -webkit-text-stroke-width: 1px; 
+    -webkit-text-stroke-color: #FF00FF; 
+    text-fill-color: white; 
+    text-stroke-width: 1px;
+    text-stroke-color: #FF00FF; 
 }
 
 .book-price{
-    /* color: #ffffff; */
-    background: white;
-    color: #ff00ff;
+    font-size: 17px;
+    font-weight: 700;
+    background: #87cefa;
+    border-radius: 0px 0px 8px 8px;
     padding-left:8px ;
+    color: white;
+    -webkit-text-fill-color: white; 
+    -webkit-text-stroke-width: .7px; 
+    -webkit-text-stroke-color: #FF00FF; 
+    text-fill-color: white; 
+    text-stroke-width: .5px;
+    text-stroke-color: #FF00FF; 
+    padding-bottom: 5px;
 }
 
 .bookImg{
     width: 70%;
     transition: all 0.25s cubic-bezier(0.42, 0, 0.58, 1) 0s;
 }
-.bookImg:hover {
-    transform: scale(1.1); /* Example transform on hover */
-  }
+/* .bookImg:hover {
+    transform: scale(1.1); 
+  } */
 
 @media screen and (max-width: 768px) {
     .bookImg{

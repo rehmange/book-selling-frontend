@@ -1,15 +1,10 @@
-import { useState, useEffect } from "react"
 import { Row } from "antd"
 import styled from "styled-components"
 // import { coupleJellyfish } from "./globalImges"
 
 import { background } from '~/components/globalImges'
 
-const About = ({aboutData}:any) => {
-
-    console.log(aboutData, "aboutData")
-
-
+const About = ({ aboutData }: any) => {
     return (
         <AboutStyled >
             <div className="about-top">
@@ -20,7 +15,8 @@ const About = ({aboutData}:any) => {
                         <div className="about-title-text">
                             {/* We are
                             JellyFish Press! */}
-                        {aboutData.Title}
+
+                            {aboutData.Title}
                         </div>
                     </Row>
 
@@ -54,15 +50,11 @@ const AboutStyled = styled.div`
 .about-top{
     min-height: calc(100vh - 207px);
     /* height: 100px; */
-    background-image: url(${background});
+    /* background-image: url(${background}); */
     background-size: cover;
     background-repeat: no-repeat;
-    /* background-attachment: fixed; */
     background-position: center;
 }
-
- /* background: linear-gradient(to right, #A03AA3, #f6bcca, #03A0DB); */
- /* min-height: calc(100vh - 164px); */
 
 .about-container{
     max-width: 992px;
@@ -70,64 +62,77 @@ const AboutStyled = styled.div`
 }
 
 .about-title{
-    /* padding: 63px 0px 0px 0px; */
-    margin-top: 83px;
-
-    /* border-radius: 2px  ;
-     */
-    /* color: #9f3c9f; */
+    margin-top: 36px;
     color: #fff;
-
     font-weight: 800;
-
     width: 100%;
     font-family: 'Protest Riot';
-    text-shadow: 0px 2px 4px #4eb5d0;
+    /* text-shadow: 0px 2px 4px #4eb5d0; */
 }
 
 .about-title-text{
     padding: 10px;
-    font-size: 48px;
-    border: 3px solid #FF00FF;
+    font-size: 70px;
+    /* border: 3px solid #FF00FF; */
+    color: white;
+    -webkit-text-fill-color: white; 
+    -webkit-text-stroke-width: 1px; 
+    -webkit-text-stroke-color: #FF00FF; 
+    text-fill-color: white; 
+    text-stroke-width: .5px;
+    text-stroke-color: #FF00FF; 
 }
 
 
 .about-desc-1{
-
     margin-top: 35px;
-    border-radius: 2px;
     font-family: cursive;
-    /* padding-top: 35px; */
-    font-size: 20px;
-    /* color: #0f4f81; */
-    color: #87CEFA;
     width: 100%;
     text-align: center;
     font-weight:600;
+    font-size: 23px;
+   
+
 }
 .about-desc-1-text{
+    border-radius: 8px !important;
     max-width: 710px;
-    background-color: white;
+    background-color: #87CEFA;
     padding: 8px;
+    font-weight: 1000;
+    color: white;
+    -webkit-text-fill-color: white; 
+    -webkit-text-stroke-width: 1px; 
+    -webkit-text-stroke-color: #FF00FF; 
+    text-fill-color: white; 
+    text-stroke-width: .5px;
+    text-stroke-color: #FF00FF; 
 }
 .about-desc-2{
+    font-size: 23px;
+    font-weight: 1000;
+    color: white;
     margin-top: 35px;
-    /* background-color: white; */
-    border-radius: 2px;
     font-family: cursive;
-    /* padding-top: 35px; */
     font-size: 20px;
-    /* color: #0f4f81; */
-    color: #87CEFA;
     width: 100%;
     text-align: center;
     font-weight:600;
 
 }
 .about-desc-2-text{
-    padding: 8px;
+    border-radius: 8px !important;
     max-width: 710px;
-    background-color: white;
+    background-color: #87CEFA;
+    padding: 8px;
+    font-weight: 1000;
+    color: white;
+    -webkit-text-fill-color: white; 
+    -webkit-text-stroke-width: 1px; 
+    -webkit-text-stroke-color: #FF00FF; 
+    text-fill-color: white; 
+    text-stroke-width: .5px;
+    text-stroke-color: #FF00FF; 
 }
 
 
@@ -138,9 +143,7 @@ const AboutStyled = styled.div`
 }
 
 .coupleJellyFish{
-    /* transform: rotate(-21deg); */
     height: 420px;
-    /* animation: rotateAnimation 4s alternate infinite */
 }
 
 @keyframes rotateAnimation {

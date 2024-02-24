@@ -19,7 +19,7 @@ const NoMatch = lazy(() => import('./components/NoMatch'));
 // const Landing = lazy(() => import('./components/Landing'));
 
 function App() {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
   const [aboutData, setAboutData] = useState({
     Title: "Title",
     Desc1: "Desc1",
@@ -33,7 +33,13 @@ function App() {
       setAboutData(data?.data)
     }
     getAbout()
+
+    setTimeout(() => {
+      setOpen(true)
+    }, 30000)
+
   }, [])
+
 
 
   return (
@@ -44,36 +50,24 @@ function App() {
         <div className='headerContainer'>
           <Navbar />
         </div>
-        {/* </Header> */}
         <div className='content'>
-
-
-          {/* <Content className='content'> */}
           <Suspense fallback={<LoadingOverlay loaderSize="40px" backgroundColor="white" />}>
-            {/* <BrowserRouter> */}
             <Routes>
               <Route>
                 <Route path="/">
                   <Route path="" element={<Home />} />
                   <Route path="books" element={<Books />} />
-                  <Route path="book/:id" element={<Book />} />
+                  <Route path="book/:id/:title" element={<Book />} />
                   <Route path="about" element={<About aboutData={aboutData} />} />
                 </Route>
               </Route>
               <Route path="*" element={<NoMatch />} />
             </Routes>
-            {/* </BrowserRouter> */}
           </Suspense>
         </div>
-        {/* </Content> */}
-        {/* <Footer > */}
         <div>
-          {/* <EmailBottom /> */}
           <FooterSite />
         </div>
-        {/* Ant Design ©{new Date().getFullYear()} Created by Ant UED */}
-        {/* </Footer> */}
-        {/* </Layout> */}
       </BrowserRouter>
     </AppStyled>
   )
@@ -88,7 +82,6 @@ position: relative;
   width: 100%;
   position: sticky;
   top: 0px;
-/* position: fixed; */
 z-index: 2;
 }
 
@@ -104,10 +97,7 @@ z-index: 2;
 @media screen and (max-width: 768px) {
   .content{
     min-height: calc(100vh - 124px);
+    background-position: left;
 }
   }
-
-
-
-
 `

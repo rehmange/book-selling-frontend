@@ -1,5 +1,5 @@
 import { Button, Col, Row } from 'antd'
-import { /* FacebookOutlined, */ YoutubeOutlined, TikTokOutlined, PinterestOutlined, InstagramOutlined, WhatsAppOutlined, LinkedinOutlined, XOutlined, ReadOutlined, /* WarningOutlined */ } from '@ant-design/icons'
+import { FacebookOutlined, YoutubeOutlined, TikTokOutlined, PinterestOutlined, InstagramOutlined, WhatsAppOutlined, LinkedinOutlined, XOutlined, ReadOutlined, WarningOutlined } from '@ant-design/icons'
 import styled from 'styled-components'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
@@ -18,30 +18,30 @@ const FooterSite = () => {
         getLinks()
     }, [])
 
-    // const socialIcon = (type: string) => {
-    //     switch (type) {
-    //         case "facebook":
-    //             return <FacebookOutlined className='social-icon-img' />
-    //         case "youtube":
-    //             return <YoutubeOutlined className='social-icon-img' />
-    //         case "instagram":
-    //             return <InstagramOutlined className='social-icon-img' />
-    //         case "pinterest":
-    //             return <PinterestOutlined className='social-icon-img' />
-    //         case "tiktok":
-    //             return <TikTokOutlined className='social-icon-img' />
-    //         case "whatsapp":
-    //             return <WhatsAppOutlined className='social-icon-img' />
-    //         case "linkedin":
-    //             return <LinkedinOutlined className='social-icon-img' />
-    //         case "twitter":
-    //             return <XOutlined className='social-icon-img' />
-    //         case "docs":
-    //             return <ReadOutlined className='social-icon-img' />
-    //         default:
-    //             return <WarningOutlined className='social-icon-img' />
-    //     }
-    // }
+    const socialIcon = (type: string) => {
+        switch (type) {
+            case "facebook":
+                return <FacebookOutlined className='social-icon-img' />
+            case "youtube":
+                return <YoutubeOutlined className='social-icon-img' />
+            case "instagram":
+                return <InstagramOutlined className='social-icon-img' />
+            case "pinterest":
+                return <PinterestOutlined className='social-icon-img' />
+            case "tiktok":
+                return <TikTokOutlined className='social-icon-img' />
+            case "whatsapp":
+                return <WhatsAppOutlined className='social-icon-img' />
+            case "linkedin":
+                return <LinkedinOutlined className='social-icon-img' />
+            case "twitter":
+                return <XOutlined className='social-icon-img' />
+            case "docs":
+                return <ReadOutlined className='social-icon-img' />
+            default:
+                return <WarningOutlined className='social-icon-img' />
+        }
+    }
 
     console.log(links, "Links")
     return (
@@ -50,7 +50,7 @@ const FooterSite = () => {
 
             <FooterSiteStyled>
                 <Row className="footer-container" justify={{ xs: 'center', sm: 'center', md: 'space-between' }} align={'middle'}>
-                    {!isTablet && <Col md={8} xs={24} className='footer-left-text'>© {new Date().getFullYear()} JellyFish Press, Inc.</Col>}
+                    {!isTablet && <Col md={8} xs={24} className='footer-left-text'>© {new Date().getFullYear()} Jellyfish Press, Inc.</Col>}
                     {isTablet ? <>
                         <Col>
                             <Row>
@@ -64,48 +64,30 @@ const FooterSite = () => {
                                 </div></Col>
                             </Row>
                         </Col>
-                        <Col md={12} xs={24} className='footer-left-text'>© {new Date().getFullYear()} JellyFish Press, Inc.</Col>
+                        <Col md={12} xs={24} className='footer-left-text'>© {new Date().getFullYear()} Jellyfish Press, Inc.</Col>
                         <Col md={12} xs={24} className='social-icon-container'>
                             <Row gutter={20} style={{ marginLeft: "0px", marginRight: "0px" }}>
-                                {/* {links?.map((item: any) => {
-                                            return <Col key={item?.SocialLinkId} className='social-icon'>
-                                                <a href={item?.Url} target='_blank'>
-                                                    {socialIcon(item?.Type)}
-                                                </a>
-                                            </Col>
-                                        })} */}
-
-                                <Col className='social-icon'><YoutubeOutlined className='social-icon-img' /></Col>
-                                <Col className='social-icon'><InstagramOutlined className='social-icon-img' /></Col>
-                                <Col className='social-icon'><PinterestOutlined className='social-icon-img' /></Col>
-                                <Col className='social-icon'><TikTokOutlined className='social-icon-img' /></Col>
-                                <Col className='social-icon'><WhatsAppOutlined className='social-icon-img' /></Col>
-                                <Col className='social-icon'><LinkedinOutlined className='social-icon-img' /></Col>
-                                <Col className='social-icon'><XOutlined className='social-icon-img' /></Col>
-                                <Col className='social-icon'><ReadOutlined className='social-icon-img' /></Col>
-
+                                {links?.map((item: any) => {
+                                    return <Col key={item?.SocialLinkId} className='social-icon'>
+                                        <a href={item?.Url} target='_blank'>
+                                            {socialIcon(item?.Type)}
+                                        </a>
+                                    </Col>
+                                })}
                             </Row>
                         </Col>
 
                     </>
                         : <> <Col md={16}>
                             <Row gutter={20} style={{ marginLeft: "0px", marginRight: "0px" }} justify={"end"}>
-                                {/* {links?.map((item: any) => {
-                            return <Col key={item?.SocialLinkId} className='social-icon'>
-                                <a href={item?.Url} target='_blank'>
-                                    {socialIcon(item?.Type)}
-                                </a>
-                            </Col>
-                        })} */}
-
-                                <Col className='social-icon'><YoutubeOutlined className='social-icon-img' /></Col>
-                                <Col className='social-icon'><InstagramOutlined className='social-icon-img' /></Col>
-                                <Col className='social-icon'><PinterestOutlined className='social-icon-img' /></Col>
-                                <Col className='social-icon'><TikTokOutlined className='social-icon-img' /></Col>
-                                <Col className='social-icon'><WhatsAppOutlined className='social-icon-img' /></Col>
-                                <Col className='social-icon'><LinkedinOutlined className='social-icon-img' /></Col>
-                                <Col className='social-icon'><XOutlined className='social-icon-img' /></Col>
-                                <Col className='social-icon'><ReadOutlined className='social-icon-img' /></Col>
+                                {links?.map((item: any) => {
+                                    console.log(item, "itemm")
+                                    return <Col key={item?.SocialLinkId} className='social-icon'>
+                                        <a href={item?.Url} target='_blank' style={{ display: 'flex', justifyContent: 'center' }}>
+                                            {socialIcon(item?.Type)}
+                                        </a>
+                                    </Col>
+                                })}
                                 <Col style={{ paddingLeft: "36px", paddingRight: "50px" }}>
                                     <Row justify={"end"} ><div className="email-icon">
                                         <img src={email} className='email-pic' alt="Email Icon" />
@@ -119,17 +101,6 @@ const FooterSite = () => {
                                 </Col>
                             </Row>
                         </Col>
-                            {/* <Col md={7}>
-                            <Row justify={"end"} ><div className="email-icon">
-                                <img src={email} className='email-pic' alt="Email Icon" />
-                                <span className="icon-text">Exclusive Offers & News</span>
-                                <span className="icon-text-signup">SIGN UP TODAY!</span>
-                                <Button className='signUpBtn-email' onClick={() => setOpen(!open)} >
-                                    Sign Up
-                                </Button>
-                            </div>
-                            </Row>
-                        </Col> */}
                         </>
                     }
 
@@ -175,12 +146,14 @@ background-color:#87CFEA !important;
     transition: all 0.25s cubic-bezier(0.42, 0, 0.58, 1) 0s;
 
 }
-.social-icon:hover{
-    transform: scale(1.1); /* Example transform on hover */
-}
+
 .social-icon-img{
     color:#FF00FF;
     font-size:25px
+}
+
+.social-icon-img:hover{
+    transform: scale(1.1); 
 }
 
 
@@ -198,8 +171,8 @@ background-color:#87CFEA !important;
 }
 
 .icon-text {
-    font-family: cursive;
-    font-size: 14px;
+    font-family: 'Protest Riot';
+    font-size: 20px;
     font-style: normal;
     font-variant-caps: normal;
     font-variant-east-asian: normal;
@@ -211,16 +184,24 @@ background-color:#87CFEA !important;
     /* color:#FF00FF; */
     width: max-content;
     position: absolute;
-    bottom: 76px;
+    bottom: 68px;
     left: 50%;
     transform: translateX(-50%);
-    border: #FF00FF 1px solid;
-    padding: 1px;
+    font-weight: 900;
+    color: white;
+    -webkit-text-fill-color: white; 
+    -webkit-text-stroke-width: .4px; 
+    -webkit-text-stroke-color: #FF00FF; 
+    text-fill-color: white; 
+    text-stroke-width: .4px;
+    text-stroke-color: #FF00FF;
+    /* border: #FF00FF 1px solid;
+    padding: 1px; */
 }
 
 .icon-text-signup{
-    font-family: cursive;
-    font-size: 16px;
+    font-family: 'Protest Riot';
+    font-size: 20px;
     font-style: normal;
     font-variant-caps: normal;
     font-variant-east-asian: normal;
@@ -232,12 +213,20 @@ background-color:#87CFEA !important;
     /* color:#1E90FF; */
     width: max-content;
     position: absolute;
-    bottom: 46px;
+    bottom: 42px;
     left: 50%;
     transform: translateX(-50%);
-    border: #FF00FF 1px solid;
+    /* border: #FF00FF 1px solid; */
     /* border-top: 0px; */
     padding: 1px;
+    font-weight: 900;
+    color: white;
+    -webkit-text-fill-color: white; 
+    -webkit-text-stroke-width: .4px; 
+    -webkit-text-stroke-color: #FF00FF; 
+    text-fill-color: white; 
+    text-stroke-width: .4px;
+    text-stroke-color: #FF00FF;
 }
 
 .signUpBtn-email {

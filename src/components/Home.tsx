@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { background } from '~/components/globalImges'
+// import { background } from '~/components/globalImges'
 const Home = () => {
     return (
         <HomeStyled >
-            <img src={background} alt='background' className='homeImage' />
+            {/* <img src={background} alt='background' className='homeImage' /> */}
         </HomeStyled>
     )
 }

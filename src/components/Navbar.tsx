@@ -29,7 +29,7 @@ const Navbar = () => {
                 <Row className='header'>
                     <Row style={{ width: '100%' }} justify={"space-between"} >
                         {isTablet ? <>
-                            <Col xs={8} className='logo'  >
+                            <Col xs={4} className='logo'  >
                                 <Row style={{ height: "100%", paddingLeft: "10px" }}>
                                     {subNavbar || mobileShop ? <CloseOutlined onClick={() => { setSubNavbar(false); setMobileShop(false) }}
                                         style={{ color: "#1E90FF" }}
@@ -39,13 +39,13 @@ const Navbar = () => {
                                 </Row>
 
                             </Col>
-                            <Col xs={8}>
+                            <Col xs={16}>
                                 <Row align={'middle'} style={{ height: "100%" }} justify={"center"} className='nav-Line'>
                                     Dive into Depths, Find Strength & Brilliance
                                 </Row>
 
                             </Col>
-                            <Col xs={8} ><Row style={{ width: "100%", height: "100%" }} align={'middle'} justify={'end'}>
+                            <Col xs={4} ><Row style={{ width: "100%", height: "100%" }} align={'middle'} justify={'end'}>
                                 <Link to='/'><Row onClick={closeNavBar} style={{ padding: "5px 0px" }}> <img className='logo' src={logo} width={'50px'} /></Row> </Link>
                             </Row></Col>
                         </> : <>
@@ -68,6 +68,7 @@ const Navbar = () => {
                                 <Row gutter={50} style={{ marginLeft: "0px", marginRight: "0px", width: "100%", height: "100%" }} align={'middle'} justify={"end"} >
                                     <Col className='menu' onClick={() => setSubNavbar(!subNavbar)}>
                                         Shop <CaretDownOutlined />
+                                        {subNavbar ? <SubNavbar mobileShop={mobileShop} setMobileShop={setMobileShop} setSubNavbar={setSubNavbar} /> : null}
                                     </Col>
                                     <Col className='menu' onClick={closeNavBar}>
                                         <Link to='/about'> About </Link></Col>
@@ -80,7 +81,7 @@ const Navbar = () => {
             </NavbarStyled>
 
             {
-                subNavbar ? <SubNavbar mobileShop={mobileShop} setMobileShop={setMobileShop} setSubNavbar={setSubNavbar} /> : mobileShop ?
+                subNavbar && isTablet ? <SubNavbar mobileShop={mobileShop} setMobileShop={setMobileShop} setSubNavbar={setSubNavbar} /> : mobileShop ?
                     <MobileNavBarShop setMobileShop={setMobileShop} setSubNavbar={setSubNavbar} /> : null
             }
 
@@ -97,15 +98,12 @@ box-shadow: 0px 4px 6px -3px rgba(0, 0, 0, 0.1), 0px 2px 4px -2px rgba(0, 0, 0, 
     margin:0 auto;
     justify-content: space-between;
     align-items: center;
-    /* position: fixed; */
   }
 .logo{
     cursor: pointer;
 
   }
   .menu{
-    /* color: #9d129d; */
-    /* color: #87CFEA; */
     color:#1E90FF;
     font-size: 15px;
     font-weight: 800;
@@ -115,7 +113,6 @@ box-shadow: 0px 4px 6px -3px rgba(0, 0, 0, 0.1), 0px 2px 4px -2px rgba(0, 0, 0, 
     font-family: 'Pacifico';
     font-size: 28px;
     color:#1E90FF;
-    /* color: #87CFEA; */
     font-weight: 800;
     padding-left: 30px;
   }
@@ -123,6 +120,7 @@ box-shadow: 0px 4px 6px -3px rgba(0, 0, 0, 0.1), 0px 2px 4px -2px rgba(0, 0, 0, 
   @media screen and (max-width: 768px) {
     .nav-Line{
     font-size: 12px;
+    padding-left: 0px;
   }
   .logo{
     padding-right: 5px;

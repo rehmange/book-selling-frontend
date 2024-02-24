@@ -118,19 +118,16 @@ const EmailCaptureStyled = styled.div`
 }
 
 .email-text{
-    /* font-size: 14px;
-    font-weight: 800;
-    color:#0f4f81; */
     text-align: center;
     font-size: 23px;
     font-weight: 800;
-    color: white; /* Inner color */
-    -webkit-text-fill-color: white; /* For Safari */
-    -webkit-text-stroke-width: 1px; /* Width of the outline */
-    -webkit-text-stroke-color: #FF00FF; /* Color of the outline */
-    text-fill-color: white; /* For Firefox */
-    text-stroke-width: .5px; /* Width of the outline */
-    text-stroke-color: #FF00FF; /* Color of the outline */
+    color: white;
+    -webkit-text-fill-color: white; 
+    -webkit-text-stroke-width: 1px; 
+    -webkit-text-stroke-color: #FF00FF; 
+    text-fill-color: white; 
+    text-stroke-width: .5px;
+    text-stroke-color: #FF00FF; 
 }
 .signUpBtn {
     /* background: linear-gradient(to right, #04A0DB, #A13BA1); */

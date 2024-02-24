@@ -1,4 +1,5 @@
 
+import { useParams } from "react-router-dom";
 import { Row, Col, Button } from "antd";
 import styled from "styled-components";
 
@@ -6,89 +7,107 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import { Keyboard, Pagination, Navigation } from "swiper/modules";
 import Browse from "./Browse";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const Book = () => {
-  const images = [
-    "https://explore.rebelgirls.com/wp-content/uploads/2022/06/Board-Book_Cover-1.png",
-    "https://explore.rebelgirls.com/wp-content/uploads/2022/06/Board-Book_Angle.png",
-    "https://explore.rebelgirls.com/wp-content/uploads/2022/06/Board-Book_Cover-1.png",
-    "https://explore.rebelgirls.com/wp-content/uploads/2022/06/Board-Book_Angle.png",
-    "https://explore.rebelgirls.com/wp-content/uploads/2022/06/Board-Book_Cover-1.png",
-  ]; // List of image URLs
+  const { id } = useParams();
+
+  const [bookData, setBookData] = useState<any>([])
+
+  useEffect(() => {
+    const getBook = async () => {
+      const { data } = await axios.get(`${import.meta.env.VITE_SERVER_URL}/book/${id}`)
+      setBookData(data?.data)
+    }
+    getBook()
+  }, [id])
 
   return (
     <BooksStyled>
       <Row className="book-container">
-        <Col md={6} xs={24} style={{ paddingTop: "40px" }}>
-          <Browse />
-        </Col>
-        <Col md={18}>
-          <Row>
-            <Row className="book-title" justify={"center"} align={"middle"}>
-              Good Night Stories for Rebel Girls: Baby’s First Book of
-              Extraordinary Women
-            </Row>
-            <Row gutter={25} style={{ marginLeft: "0px", marginRight: "0px" }}>
-              <Col md={12} className="productImg">
-                <Row
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    height: "100%",
-                  }}
-                >
-                  <Swiper
-                    slidesPerView={1}
-                    spaceBetween={30}
-                    keyboard={{
-                      enabled: true,
-                    }}
-                    loop={true}
-                    pagination={{
-                      clickable: true,
-                    }}
-                    navigation={true}
-                    modules={[Keyboard, Pagination, Navigation]}
-                    className="mySwiper"
-                  >
-                    {images?.map((image, index) => {
-                      return (
-                        <div key={index}>
-                          <SwiperSlide
-                            style={{
-                              display: "flex",
-                              justifyContent: "center",
-                            }}
-                          >
-                            <img src={image} className="book-page-img" />
-                          </SwiperSlide>
-                        </div>
-                      );
-                    })}
-                  </Swiper>
+        {
+          bookData !== null ? <>
+            <Col md={6} xs={24} style={{ paddingTop: "40px" }}>
+              <Browse />
+            </Col>
+            <Col md={18}>
+              <Row>
+                <Row className="book-title" justify={"center"} align={"middle"}>
+                  <div className="book-title-text">
+                    {bookData?.Title}
+
+                  </div>
                 </Row>
-              </Col>
-              <Col md={12}>
-                <Row className="book-description">
-                  This board book adaptation of the New York Times bestselling
-                  Good Night Stories for Rebel Girls series introduces your
-                  little reader to the lives of extraordinary Rebel women.
+                <Row gutter={25} style={{ marginLeft: "0px", marginRight: "0px" }}>
+                  <Col md={12} className="productImg">
+                    <Row
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        height: "100%",
+                      }}
+                    >
+                      <Swiper
+                        slidesPerView={1}
+                        spaceBetween={30}
+                        keyboard={{
+                          enabled: true,
+                        }}
+                        loop={true}
+                        pagination={{
+                          clickable: true,
+                        }}
+                        navigation={true}
+                        modules={[Keyboard, Pagination, Navigation]}
+                        className="mySwiper"
+                      >
+                        {bookData?.ImageLink?.split(",").map((image: string, index: number) => {
+                          return (
+                            <div key={index}>
+                              <SwiperSlide
+                                style={{
+                                  display: "flex",
+                                  justifyContent: "center",
+                                }}
+                              >
+                                <img src={image} className="book-page-img" />
+                              </SwiperSlide>
+                            </div>
+                          );
+                        })}
+                      </Swiper>
+                    </Row>
+                  </Col>
+                  <Col md={12}>
+                    <Row className="book-description">
+                      {bookData?.Description}
+                    </Row>
+                    <Row className="book-i-price">
+                      <strong>MSRP</strong> :{" "}
+                      <span style={{ fontWeight: "500" }}>&nbsp; ${bookData?.Price}</span>
+                    </Row>
+                    <Row className="buy-text">Buy Now</Row>
+                    <Row>
+                      <Col style={{width:"100%"}}>
+                      <a href={bookData?.Amazon} target='_blank' style={{ display: 'flex', justifyContent: 'center' }}>
+                      <Button className="buyBtn" style={{ width: "100%", border: "5px solid white" }}>
+                          Amazon
+                        </Button>
+                      </a>
+                      </Col>
+                    </Row>
+                  </Col>
                 </Row>
-                <Row className="book-i-price">
-                  <strong>MSRP</strong> :{" "}
-                  <span style={{ fontWeight: "500" }}>&nbsp; $9.99</span>
-                </Row>
-                <Row className="buy-text">Buy Now</Row>
-                <Row>
-                  <Button className="buyBtn" style={{ width: "100%" }}>
-                    Amazon
-                  </Button>
-                </Row>
-              </Col>
-            </Row>
-          </Row>
-        </Col>
+              </Row>
+            </Col>
+          </>
+            : <div className="not-available">
+              Not Available
+            </div>
+        }
+
       </Row>
     </BooksStyled>
   );
@@ -98,8 +117,6 @@ export default Book;
 
 const BooksStyled = styled.div`
 padding-bottom:20px;
-
-  /* background-color: #fff; */
   .book-container {
     max-width: 992px;
     margin: 0 auto;
@@ -108,18 +125,30 @@ padding-bottom:20px;
   .book-title {
     padding: 25px 0px;
     width: 100%;
-    /* color: #02a1db; */
-    color: #fafafa;
-    font-weight: 500;
-    font-size: 45px;
-    font-family: "Protest Riot", sans-serif;
-    text-shadow: 0px 5px 4px rgb(144 54 144);
+
   }
 
+.book-title-text{
+  padding: 5px;
+  color: #fafafa;
+    font-weight: 900;
+    font-size: 65px;
+    font-family: "Protest Riot", sans-serif;
+    /* text-shadow: 0px 5px 4px rgb(144 54 144);
+    border: 3px solid #FF00FF; */
+    color: white;
+    -webkit-text-fill-color: white; 
+    -webkit-text-stroke-width: 1px; 
+    -webkit-text-stroke-color: #FF00FF; 
+    text-fill-color: white; 
+    text-stroke-width: .5px;
+    text-stroke-color: #FF00FF; 
+}
+
   .productImg {
-    // background: #f4f4f4;
-    background: #fff;
-    height: 400px;
+    background: #87cefa;
+    border-radius: 8px;
+    height: 320px;
   }
 
   .book-page-img {
@@ -145,33 +174,48 @@ padding-bottom:20px;
 
   .book-description {
     font-size: 18px;
-    font-weight: 600;
-    /* color: #0f4f81; */
-    color: #fff;
+    font-weight: 900;
+    color: white;
+    -webkit-text-fill-color: white; 
+    -webkit-text-stroke-width: 1px; 
+    -webkit-text-stroke-color: #FF00FF; 
+    text-fill-color: white; 
+    text-stroke-width: 1px;
+    text-stroke-color: #FF00FF; 
   }
   .book-i-price {
     font-size: 18px;
-    /* color: #0f4f81; */
-    color: #fff;
     margin-top: 20px;
+    color: white;
+    -webkit-text-fill-color: white; 
+    -webkit-text-stroke-width: 1px; 
+    -webkit-text-stroke-color: #FF00FF; 
+    text-fill-color: white; 
+    text-stroke-width: 1px;
+    text-stroke-color: #FF00FF; 
   }
 
   .buy-text {
     font-size: 18px;
     font-weight: 800;
-    /* color: #0f4f81; */
-    color: #fff;
     margin-top: 20px;
+    color: white;
+    -webkit-text-fill-color: white; 
+    -webkit-text-stroke-width: 1px; 
+    -webkit-text-stroke-color: #FF00FF; 
+    text-fill-color: white; 
+    text-stroke-width: 1px;
+    text-stroke-color: #FF00FF; 
   }
 
   .buyBtn {
+
     font-size: 18px;
     padding: 25px 0px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-    /* background: linear-gradient(to right, #04a0db, #a13ba1); */
     background: linear-gradient(to right, #04A0DB, #FF00FF);
     border: none;
     color: white;
@@ -180,7 +224,6 @@ padding-bottom:20px;
     transition: background-color 0.3s, color 0.3s;
   }
   .buyBtn:hover {
-    /* background: linear-gradient(to right, #a13ba1, #04a0db) !important; */
     background: linear-gradient(to right, #FF00FF, #04A0DB) !important;
     font-weight: 600;
     color: #fff !important;
@@ -197,6 +240,19 @@ padding-bottom:20px;
     top: 365px;
   }
 
+  .not-available{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100vh - 227px);
+    color: #fafafa;
+    font-weight: 500;
+    font-size: 45px;
+    font-family: "Protest Riot", sans-serif;
+    text-shadow: 0px 5px 4px rgb(144 54 144);
+  }
+
   @media screen and (max-width: 768px) {
     .book-title {
       text-align: center;
@@ -205,13 +261,13 @@ padding-bottom:20px;
     }
 
     .productImg {
-      height: 260px;
+      height: 240px;
     }
     .book-page-img {
       width: 70%;
     }
     .swiper-pagination {
-      top: 232px;
+      top: 220px;
     }
   }
 `;
