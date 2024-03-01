@@ -1,6 +1,6 @@
 
 import { useParams } from "react-router-dom";
-import { Row, Col, Button } from "antd";
+import { Row, Col, Button, Spin } from "antd";
 import styled from "styled-components";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,16 +9,19 @@ import { Keyboard, Pagination, Navigation } from "swiper/modules";
 import Browse from "./Browse";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const Book = () => {
   const { id } = useParams();
-
+  const [loading, setLoading] = useState(false)
   const [bookData, setBookData] = useState<any>([])
 
   useEffect(() => {
     const getBook = async () => {
+      setLoading(true)
       const { data } = await axios.get(`${import.meta.env.VITE_SERVER_URL}/book/${id}`)
       setBookData(data?.data)
+      setLoading(false)
     }
     getBook()
   }, [id])
@@ -26,88 +29,95 @@ const Book = () => {
   return (
     <BooksStyled>
       <Row className="book-container">
-        {
-          bookData !== null ? <>
-            <Col md={6} xs={24} style={{ paddingTop: "40px" }}>
-              <Browse />
-            </Col>
-            <Col md={18}>
-              <Row>
-                <Row className="book-title" justify={"center"} align={"middle"}>
-                  <div className="book-title-text">
-                    {bookData?.Title}
 
-                  </div>
-                </Row>
-                <Row gutter={25} style={{ marginLeft: "0px", marginRight: "0px" }}>
-                  <Col md={12} className="productImg">
-                    <Row
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        height: "100%",
-                      }}
-                    >
-                      <Swiper
-                        slidesPerView={1}
-                        spaceBetween={30}
-                        keyboard={{
-                          enabled: true,
-                        }}
-                        loop={true}
-                        pagination={{
-                          clickable: true,
-                        }}
-                        navigation={true}
-                        modules={[Keyboard, Pagination, Navigation]}
-                        className="mySwiper"
-                      >
-                        {bookData?.ImageLink?.split(",").map((image: string, index: number) => {
-                          return (
-                            <div key={index}>
-                              <SwiperSlide
-                                style={{
-                                  display: "flex",
-                                  justifyContent: "center",
-                                }}
-                              >
-                                <img src={image} className="book-page-img" />
-                              </SwiperSlide>
-                            </div>
-                          );
-                        })}
-                      </Swiper>
+        {loading ?
+          <Row style={{ width: "100%", height: "100%" }} justify={'center'} align={'middle'}>
+            <Spin indicator={<LoadingOutlined style={{ fontSize: 50, color: "var(--app-primary-color)" }} spin />} />
+          </Row>
+          : <>
+
+            {
+              bookData !== null ? <>
+                <Col md={6} xs={24} style={{ paddingTop: "40px" }}>
+                  <Browse />
+                </Col>
+                <Col md={18}>
+                  <Row>
+                    <Row className="book-title" justify={"center"} align={"middle"}>
+                      <div className="book-title-text">
+                        {bookData?.Title}
+
+                      </div>
                     </Row>
-                  </Col>
-                  <Col md={12}>
-                    <Row className="book-description">
-                      {bookData?.Description}
-                    </Row>
-                    <Row className="book-i-price">
-                      <strong>MSRP</strong> :{" "}
-                      <span style={{ fontWeight: "500" }}>&nbsp; ${bookData?.Price}</span>
-                    </Row>
-                    <Row className="buy-text">Buy Now</Row>
-                    <Row>
-                      <Col style={{width:"100%"}}>
-                      <a href={bookData?.Amazon} target='_blank' style={{ display: 'flex', justifyContent: 'center' }}>
-                      <Button className="buyBtn" style={{ width: "100%", border: "5px solid white" }}>
-                          Amazon
-                        </Button>
-                      </a>
+                    <Row gutter={25} style={{ marginLeft: "0px", marginRight: "0px" }}>
+                      <Col md={12} className="productImg">
+                        <Row
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            height: "100%",
+                          }}
+                        >
+                          <Swiper
+                            slidesPerView={1}
+                            spaceBetween={30}
+                            keyboard={{
+                              enabled: true,
+                            }}
+                            loop={true}
+                            pagination={{
+                              clickable: true,
+                            }}
+                            navigation={true}
+                            modules={[Keyboard, Pagination, Navigation]}
+                            className="mySwiper"
+                          >
+                            {bookData?.ImageLink?.split(",").map((image: string, index: number) => {
+                              return (
+                                <div key={index}>
+                                  <SwiperSlide
+                                    style={{
+                                      display: "flex",
+                                      justifyContent: "center",
+                                    }}
+                                  >
+                                    <img src={image} className="book-page-img" />
+                                  </SwiperSlide>
+                                </div>
+                              );
+                            })}
+                          </Swiper>
+                        </Row>
+                      </Col>
+                      <Col md={12}>
+                        <Row className="book-description">
+                          {bookData?.Description}
+                        </Row>
+                        <Row className="book-i-price">
+                          <strong>MSRP</strong> :{" "}
+                          <span style={{ fontWeight: "500" }}>&nbsp; ${bookData?.Price}</span>
+                        </Row>
+                        <Row className="buy-text">Buy Now</Row>
+                        <Row>
+                          <Col style={{ width: "100%" }}>
+                            <a href={bookData?.Amazon} target='_blank' style={{ display: 'flex', justifyContent: 'center' }}>
+                              <Button className="buyBtn" style={{ width: "100%", border: "5px solid white" }}>
+                                Amazon
+                              </Button>
+                            </a>
+                          </Col>
+                        </Row>
                       </Col>
                     </Row>
-                  </Col>
-                </Row>
-              </Row>
-            </Col>
-          </>
-            : <div className="not-available">
-              Not Available
-            </div>
-        }
-
+                  </Row>
+                </Col>
+              </>
+                : <div className="not-available">
+                  Not Available
+                </div>
+            }
+          </>}
       </Row>
     </BooksStyled>
   );

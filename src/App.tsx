@@ -1,15 +1,15 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import styled from 'styled-components'
-import axios from "axios";
 import Navbar from '~/components/Navbar';
 import { background } from '~/components/globalImges'
 
 
 import FooterSite from "./components/FooterSite";
 import EmailCapture from "./components/EmailCapture";
+import { Row, Spin } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
 
-const LoadingOverlay = lazy(() => import("./components/LoadingOverlay"));
 const Books = lazy(() => import('./components/Books'));
 const Book = lazy(() => import('./components/Book'));
 const About = lazy(() => import('./components/About'));
@@ -20,20 +20,9 @@ const NoMatch = lazy(() => import('./components/NoMatch'));
 
 function App() {
   const [open, setOpen] = useState(false)
-  const [aboutData, setAboutData] = useState({
-    Title: "Title",
-    Desc1: "Desc1",
-    Desc2: "desc2",
-    ImageUrl: "image",
-  })
+
 
   useEffect(() => {
-    const getAbout = async () => {
-      const { data } = await axios.get(`${import.meta.env.VITE_SERVER_URL}/about`)
-      setAboutData(data?.data)
-    }
-    getAbout()
-
     setTimeout(() => {
       setOpen(true)
     }, 30000)
@@ -47,29 +36,29 @@ function App() {
       <EmailCapture open={open} setOpen={setOpen} />
       {/* <NewSell /> */}
       <BrowserRouter>
-        <div className='headerContainer'>
-          <Navbar />
-        </div>
-        <div className='content'>
-          <Suspense fallback={<LoadingOverlay loaderSize="40px" backgroundColor="white" />}>
+        <Suspense fallback={<Row style={{ height: "100vh" }} justify={"center"} align={"middle"}><Spin indicator={<LoadingOutlined style={{ fontSize: 50, color: "var(--app-primary-color)" }} spin />} /></Row>}>
+          <div className='headerContainer'>
+            <Navbar />
+          </div>
+          <div className='content'>
             <Routes>
               <Route>
                 <Route path="/">
-                  <Route path="" element={<Home />} />
+                  <Route path="/" element={<Home />} />
                   <Route path="books" element={<Books />} />
                   <Route path="book/:id/:title" element={<Book />} />
-                  <Route path="about" element={<About aboutData={aboutData} />} />
+                  <Route path="about" element={<About />} />
                 </Route>
               </Route>
               <Route path="*" element={<NoMatch />} />
             </Routes>
-          </Suspense>
-        </div>
-        <div>
-          <FooterSite />
-        </div>
+          </div>
+          <div>
+            <FooterSite />
+          </div>
+        </Suspense>
       </BrowserRouter>
-    </AppStyled>
+    </AppStyled >
   )
 }
 

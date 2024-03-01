@@ -1,44 +1,55 @@
 import styled from 'styled-components'
-import { Row, Col } from 'antd'
+import { Row, Col, Spin } from 'antd'
 // import Browse from './Browse'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { LoadingOutlined } from '@ant-design/icons'
 const Books = () => {
+    const [loading, setLoading] = useState(false)
     const [booksData, setBooksData] = useState([])
 
     useEffect(() => {
         const getBooks = async () => {
+            setLoading(true)
             const { data } = await axios.get(`${import.meta.env.VITE_SERVER_URL}/book`)
             setBooksData(data?.data)
+            setLoading(false)
         }
         getBooks()
     }, [])
     return (
         <BooksStyled>
             <Row className='books-Container'>
-                <Row className='books-title' justify={"center"} align={"middle"}>
-                    Books
-                </Row>
-                <Row style={{ width: '100%', marginLeft: "0px", marginRight: "0px", paddingBottom: "20px" }} gutter={[{ xs: 0, sm: 0, md: 15, lg: 20 }, 20]} >
-                    {
-                        booksData?.map((book: any) => {
-                            return <Col md={8} xs={24} >
 
-                                <Row justify={"center"}>
-                                    <Col span={24} className='productImg'>
-                                        <Row justify={"center"} align={"middle"} style={{ height: '100%' }}>
-                                            <img src={book?.ImageLink?.split(",")?.at(0)} className='bookImg' />
+                {loading ?
+                    <Row style={{ width: "100%", height: "100%" }} justify={'center'} align={'middle'}>
+                        <Spin indicator={<LoadingOutlined style={{ fontSize: 50, color: "var(--app-primary-color)" }} spin />} />
+                    </Row>
+                    : <>
+                        <Row className='books-title' justify={"center"} align={"middle"}>
+                            Books
+                        </Row>
+                        <Row style={{ width: '100%', marginLeft: "0px", marginRight: "0px", paddingBottom: "20px" }} gutter={[{ xs: 0, sm: 0, md: 15, lg: 20 }, 20]} >
+                            {
+                                booksData?.map((book: any) => {
+                                    return <Col md={8} xs={24} >
+
+                                        <Row justify={"center"}>
+                                            <Col span={24} className='productImg'>
+                                                <Row justify={"center"} align={"middle"} style={{ height: '100%' }}>
+                                                    <img src={book?.ImageLink?.split(",")?.at(0)} className='bookImg' />
+                                                </Row>
+                                            </Col>
+                                            <Col span={24} className='book-name'><span className='book-name-title'>{book?.Title}</span></Col>
+                                            <Col span={24} className='book-price'><strong>MSRP</strong>: ${book?.Price} | <Link className='book-price product-container' to={`/book/${book?.BookID}/${book?.Title?.replaceAll(" ", "-")}`}>More Details</Link></Col>
                                         </Row>
-                                    </Col>
-                                    <Col span={24} className='book-name'><span className='book-name-title'>{book?.Title}</span></Col>
-                                    <Col span={24} className='book-price'><strong>MSRP</strong>: ${book?.Price} | <Link className='book-price product-container' to={`/book/${book?.BookID}/${book?.Title?.replaceAll(" ", "-")}`}>More Details</Link></Col>
-                                </Row>
 
-                            </Col>
-                        })
-                    }
-                </Row>
+                                    </Col>
+                                })
+                            }
+                        </Row>
+                    </>}
             </Row>
 
         </BooksStyled>
@@ -139,12 +150,12 @@ color: white;
 }
 @media screen and (max-width: 417px) {
     .bookImg{
-        width: 80%;
+        width: 70%;
     }
 }
 @media screen and (max-width: 317px) {
     .bookImg{
-        width: 90%;
+        width: 80%;
         
     }
 }

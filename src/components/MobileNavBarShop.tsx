@@ -15,7 +15,7 @@ const MobileNavBarShop = ({ setMobileShop, setSubNavbar }: any) => {
                     <CaretLeftOutlined /> Shop
                 </Col>
             </Row>
-            <Row gutter={10} style={{ marginLeft: "0px", marginRight: "0px" }} className='mobile-nav-product'>
+            <Row gutter={[15, 15]} style={{ marginLeft: "0px", marginRight: "0px" }} className='mobile-nav-product'>
                 <Col xs={24} onClick={closeNavBar}><Link to='/books'>Books</Link></Col>
                 <Col xs={24}>Merchandise</Col>
             </Row>

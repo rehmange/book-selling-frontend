@@ -33,6 +33,6 @@ const LoadingOverlayStyled = styled.div<{ backgroundColor?: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${(props) => (props.backgroundColor ? props.backgroundColor : "rgba(0, 0, 0, 0.075)")};
+  background-color: ${(props) => (props.backgroundColor ? props.backgroundColor : "rgba(0, 0, 0, 0)")};
   z-index: 2;
 `;

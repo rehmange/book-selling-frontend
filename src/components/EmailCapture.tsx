@@ -55,14 +55,17 @@ const EmailCapture = ({ open, setOpen }: any) => {
         >
             <Modal open={open} onCancel={handleCancel} footer={null} width={400}>
                 <EmailCaptureStyled>
-                    <Row style={{ marginTop: "30px" }} justify={"center"}>
-                        <span className="email-title">Get started with Jellyfish Press </span>
+                    <Row style={{ marginTop: "25px" }} justify={"center"}>
+                        <span className="email-title">Unlock a world of storytelling!</span>
                     </Row>
-                    <Row justify={"center"} style={{ marginTop: "30px" }}>
-                        <img src={logo} width={"60%"}></img>
+                    <Row justify={"center"} style={{ marginTop: "5px" }}>
+                        <img src={logo} width={"50%"}></img>
                     </Row>
-                    <Row justify={"center"} style={{ marginTop: "30px" }}>
-                        <Col className='email-text'>Unlock a world of storytelling! Drop your email to score complimentary audio editions of all our books and enjoy VIP access to our latest releases and news.</Col>
+                    <Row justify={"center"} style={{ marginTop: "5px" }}>
+                        <Col className='email-text'>
+                            Unlock a world of storytelling! Drop your email to score complimentary audio editions of all our books and enjoy VIP access to our latest releases and news." with "Drop your email for free audio books, VIP access, sneak peeks, promos, and activities!
+                        </Col>
+                        {/* <Col className='email-text'>Unlock a world of storytelling! Drop your email to score complimentary audio editions of all our books and enjoy VIP access to our latest releases and news.</Col> */}
                     </Row>
 
                     <Form form={form} name="advanced_search"
@@ -119,7 +122,7 @@ const EmailCaptureStyled = styled.div`
 
 .email-text{
     text-align: center;
-    font-size: 23px;
+    font-size: 17px;
     font-weight: 800;
     color: white;
     -webkit-text-fill-color: white; 
