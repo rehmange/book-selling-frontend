@@ -50,12 +50,6 @@ left: -94px;
     width: 250px;
     height: 170px;
 
-/* width: 100%; */
-/* .sub-navbar-container{
-    max-width:992px;
-    margin:0 auto;
-} */
-
 .sub-navbar-menu{
     cursor: pointer;
     padding: 10px 0px;

@@ -7,7 +7,6 @@ const NewSell = () => {
             <Row className='new-sell' justify={"center"} align={"middle"}>
                 New Book: Jellyfish Press
             </Row>
-
         </NewSellStyled>
 
     )
@@ -20,7 +19,6 @@ position: sticky;
 top: 0px;
 z-index: 2;
 .new-sell{
-    /* background-color: var(--app-primary-color); */
     background-color: #87CFEA;
     height:38px;
     color:#fff;

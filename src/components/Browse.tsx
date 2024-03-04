@@ -7,7 +7,6 @@ const Browse = () => {
         <BrowseStyled>
             <Row className='browse-by'>Browse By:</Row>
             <Divider style={{ color: 'white', backgroundColor: "#FF00FF", height: "3px", margin: "10px 0" }} />
-            {/* <Row className='dots'>--------------------------------------</Row> */}
             <Row className='browse-by-item'><Link to='/books' className='browse-by-item'>All Books</Link></Row>
             <Row className='browse-by-item'>All Merch</Row>
         </BrowseStyled>
@@ -23,12 +22,9 @@ background: #87cefa;
 border-radius: 8px;
 max-width: 185px;
 padding-left: 5px;
-/* width: max-content;  */
 .browse-by{
     font-size: 15px;
     font-weight: 900;
-    /* color:#9d129d; */
-
     color: white;
     -webkit-text-fill-color: white; 
     -webkit-text-stroke-width: 1px; 

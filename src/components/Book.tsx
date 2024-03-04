@@ -144,8 +144,6 @@ padding-bottom:20px;
     font-weight: 900;
     font-size: 65px;
     font-family: "Protest Riot", sans-serif;
-    /* text-shadow: 0px 5px 4px rgb(144 54 144);
-    border: 3px solid #FF00FF; */
     color: white;
     -webkit-text-fill-color: white; 
     -webkit-text-stroke-width: 1px; 

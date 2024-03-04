@@ -41,7 +41,6 @@ position: static;
     padding-top: 25px;
     position: relative;
     display: inline-block;
-    /* width: 300px; */
 }
 
 .icon-text {
@@ -90,7 +89,6 @@ position: static;
     border: none;
     color: white;
     font-weight: 600;
-    // padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
   }

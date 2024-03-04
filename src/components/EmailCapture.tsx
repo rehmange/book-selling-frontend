@@ -6,9 +6,6 @@ import { logo } from "~/components/globalImges";
 const EmailCapture = ({ open, setOpen }: any) => {
     const [form] = Form.useForm();
 
-
-    // const [open, setOpen] = useState(isOpen)
-
     const onFinish = async (e: any) => {
         try {
             await axios.post(`${import.meta.env.VITE_SERVER_URL}/email-capture`, {
@@ -31,22 +28,15 @@ const EmailCapture = ({ open, setOpen }: any) => {
         console.log('Clicked cancel button');
         setOpen(false)
     }
-
-    // useEffect(() => {
-    //     setOpen(true)
-    // }, [])
     return (
 
         <ConfigProvider
             theme={{
                 components: {
                     Modal: {
-                        // headerBg: "#ffa9be",
-                        // contentBg: "#f6bcca",
                         headerBg: "#87CEFA",
                         contentBg: "#87CEFA",
                         colorText: "var(--app-primary-font-color)",
-                        // titleColor: "#02A1DB;",
                         titleFontSize: 20,
                         colorIcon: "#fff"
                     }
@@ -65,7 +55,6 @@ const EmailCapture = ({ open, setOpen }: any) => {
                         <Col className='email-text'>
                             Drop your email to score complimentary audio editions of all our books and enjoy VIP access to our latest releases and news.
                         </Col>
-                        {/* <Col className='email-text'>Unlock a world of storytelling! Drop your email to score complimentary audio editions of all our books and enjoy VIP access to our latest releases and news.</Col> */}
                     </Row>
 
                     <Form form={form} name="advanced_search"
@@ -127,11 +116,9 @@ const EmailCaptureStyled = styled.div`
     text-stroke-color: #FF00FF; 
 }
 .signUpBtn {
-    /* background: linear-gradient(to right, #04A0DB, #A13BA1); */
     background: linear-gradient(to right, #04A0DB, #FF00FF);
     border: none;
     color: white;
-    // padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
   }

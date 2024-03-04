@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-// import { background } from '~/components/globalImges'
 const Landing = () => {
     return (
         <LandingStyled>
