@@ -30,7 +30,7 @@ const Books = () => {
                         <Row className='books-title' justify={"center"} align={"middle"}>
                             Books
                         </Row>
-                        <Row style={{ width: '100%', marginLeft: "0px", marginRight: "0px", paddingBottom: "20px" }} gutter={[{ xs: 0, sm: 0, md: 15, lg: 20 }, 20]} >
+                        <Row style={{ width: '100%', marginLeft: "0px", marginRight: "0px", paddingBottom: "20px",justifyContent:"center" }} gutter={[{ xs: 0, sm: 0, md: 15, lg: 20 }, 20]} >
                             {
                                 booksData?.map((book: any) => {
                                     return <Col md={8} xs={24} >

@@ -63,7 +63,7 @@ const EmailCapture = ({ open, setOpen }: any) => {
                     </Row>
                     <Row justify={"center"} style={{ marginTop: "5px" }}>
                         <Col className='email-text'>
-                            Unlock a world of storytelling! Drop your email to score complimentary audio editions of all our books and enjoy VIP access to our latest releases and news." with "Drop your email for free audio books, VIP access, sneak peeks, promos, and activities!
+                            Drop your email to score complimentary audio editions of all our books and enjoy VIP access to our latest releases and news.
                         </Col>
                         {/* <Col className='email-text'>Unlock a world of storytelling! Drop your email to score complimentary audio editions of all our books and enjoy VIP access to our latest releases and news.</Col> */}
                     </Row>
@@ -103,21 +103,15 @@ export default EmailCapture
 const EmailCaptureStyled = styled.div`
 
 .email-title{
-    /* color: #016285; */
-    /* color: #FFF;
-
-    */
-    color: white; /* Inner color */
-    -webkit-text-fill-color: white; /* For Safari */
-    -webkit-text-stroke-width: 1px; /* Width of the outline */
-    -webkit-text-stroke-color: #FF00FF; /* Color of the outline */
-    text-fill-color: white; /* For Firefox */
-    text-stroke-width: 1px; /* Width of the outline */
-    text-stroke-color: #FF00FF; /* Color of the outline */
-    /* font-family: "'Protest Riot', sans-serif"; */
+    color: white; 
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #FF00FF;
+    text-fill-color: white; 
+    text-stroke-width: 1px; 
+    text-stroke-color: #FF00FF;
     font-size: 23px;
     font-weight: 800;
-    /* text-shadow: rgb(144, 54, 144) 0px 3px 4px */
 }
 
 .email-text{
@@ -145,6 +139,12 @@ const EmailCaptureStyled = styled.div`
     background: linear-gradient(to right, #FF00FF, #04A0DB) !important;
     font-weight: 600;
     color:#fff !important;
+}
+
+@media screen and (max-width: 768px) {
+    .email-title{
+        font-size: 20px;
+}
 }
 
 `

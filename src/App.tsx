@@ -87,6 +87,8 @@ z-index: 2;
   .content{
     min-height: calc(100vh - 124px);
     background-position: left;
+    padding-left: 5px;
+    padding-right: 5px;
 }
   }
 `

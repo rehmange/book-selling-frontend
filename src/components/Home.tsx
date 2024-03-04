@@ -44,21 +44,21 @@ const Home = () => {
                                 {HomeData?.Description}
                             </div>
                         </Row>
-                        <Row justify={'center'} align={'middle'} style={{ width: "100%" }}>
-                            <Col lg={4}>
+                        <Row justify={'center'} align={'middle'} style={{ width: "100%" }} >
+                            <Col lg={6} className='leftImg'>
                                 {HomeData?.LeftBook === null ? <img src={noAvaialable} width={"150px"} alt="image" style={{ marginTop: "20px" }} /> :
-                                    <>
+                                    <Row justify={"center"}>
                                         <Link to={`/book/${HomeData?.LeftBook?.id}/${HomeData?.LeftBook?.Title?.replaceAll(" ", "-")}`}>
-                                            <img src={HomeData?.LeftBook?.ImageLink} width={"200px"} alt="image" />
+                                            <img src={HomeData?.LeftBook?.ImageLink} alt="image"/*  width={"250px"} */ className='bookImg' />
                                         </Link>
-                                    </>
+                                    </Row>
                                 }
                             </Col>
-                            <Col lg={16}>
+                            <Col lg={12}>
                                 <Row style={{ width: "100%" }} justify={"center"}>
                                     <iframe
                                         width="500"
-                                        height="390"
+                                        height="320"
                                         src={`https://www.youtube.com/embed/${HomeData?.VideoLink}`}
                                         title="YouTube Video Player"
                                         frameBorder="0"
@@ -67,24 +67,24 @@ const Home = () => {
                                     ></iframe>
                                 </Row>
                             </Col>
-                            <Col lg={4}>
+                            <Col lg={6} className='rightImg'>
                                 {HomeData?.RightBook === null ? <img src={noAvaialable} width={"150px"} alt="image" style={{ marginTop: "20px" }} /> :
-                                    <>
+                                    <Row justify={"center"}>
                                         <Link to={`/book/${HomeData?.RightBook?.id}/${HomeData?.RightBook?.Title?.replaceAll(" ", "-")}`}>
-                                            <img src={HomeData?.RightBook?.ImageLink} width={"200px"} alt="image" />
+                                            <img src={HomeData?.RightBook?.ImageLink}  alt="image" className='bookImg' />
                                         </Link>
-                                    </>
+                                    </Row>
                                 }
                             </Col>
 
                         </Row>
-                        <Row style={{ width: "100%" }} justify={"center"}>
+                        <Row style={{ width: "100%", marginTop: "20px" }} justify={"center"} className='bottomImg'>
                             <Col sm={24}>
                                 <Row justify={"center"} align={"middle"}>
                                     {HomeData?.BottomBook === null ? <img src={noAvaialable} width={"150px"} alt="image" style={{ marginTop: "20px" }} /> :
                                         <>
                                             <Link to={`/book/${HomeData?.BottomBook?.id}/${HomeData?.BottomBook?.Title?.replaceAll(" ", "-")}`}>
-                                                <img src={HomeData?.BottomBook?.ImageLink} width={"200px"} alt="image" />
+                                                <img src={HomeData?.BottomBook?.ImageLink}  alt="image" className='bookImg' />
                                             </Link>
                                         </>
                                     }
@@ -108,7 +108,6 @@ const HomeStyled = styled.div`
     margin: 0 auto;
 }
 .home-title{
-    /* margin-top: 36px; */
     color: #fff;
     font-weight: 800;
     width: 100%;
@@ -125,9 +124,29 @@ const HomeStyled = styled.div`
     text-stroke-width: .5px;
     text-stroke-color: #FF00FF; 
 }
+
+.productImg{
+    background: #87cefa;
+    border-radius: 8px;
+    height: 260px;
+}
+.bookImg{
+    width: 200px;
+    background: #87cefa;
+    border-radius: 8px;
+}
 @media screen and (max-width: 768px) {
     .home-title-text{
-        font-size: 28px;
+        font-size: 26px;
+    }
+    .rightImg{
+        margin-top: 20px;
+    }
+    .leftImg{
+        margin-bottom: 8px;
+    }
+    .bottomImg{
+        margin-bottom: 17px;
     }
   }
 

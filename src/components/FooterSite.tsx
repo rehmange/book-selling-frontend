@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { useMediaQuery } from "react-responsive";
 import { email } from './globalImges'
 import EmailCapture from './EmailCapture'
+import { Link } from 'react-router-dom'
 const FooterSite = () => {
     const [open, setOpen] = useState(false)
     const [links, setLinks] = useState([])
@@ -50,7 +51,10 @@ const FooterSite = () => {
 
             <FooterSiteStyled>
                 <Row className="footer-container" justify={{ xs: 'center', sm: 'center', md: 'space-between' }} align={'middle'}>
-                    {!isTablet && <Col md={8} xs={24} className='footer-left-text'>© {new Date().getFullYear()} Jellyfish Press, Inc.</Col>}
+                    {!isTablet && <>
+                        <Col md={6} xs={24} className='footer-left-text'>© {new Date().getFullYear()} Jellyfish Press, Inc.</Col>
+                        <Col md={6} xs={24} className='footer-email-text'><Link to="mailto:info.jellyfishpress@gmail.com">info.jellyfishpress@gmail.com </Link></Col>
+                    </>}
                     {isTablet ? <>
                         <Col>
                             <Row>
@@ -65,6 +69,7 @@ const FooterSite = () => {
                             </Row>
                         </Col>
                         <Col md={12} xs={24} className='footer-left-text'>© {new Date().getFullYear()} Jellyfish Press, Inc.</Col>
+                        <Col md={12} xs={24} className='footer-email-text'><Link to="mailto:info.jellyfishpress@gmail.com">info.jellyfishpress@gmail.com </Link></Col>
                         <Col md={12} xs={24} className='social-icon-container'>
                             <Row gutter={20} style={{ marginLeft: "0px", marginRight: "0px" }}>
                                 {links?.map((item: any) => {
@@ -78,7 +83,7 @@ const FooterSite = () => {
                         </Col>
 
                     </>
-                        : <> <Col md={16}>
+                        : <> <Col md={12}>
                             <Row gutter={20} style={{ marginLeft: "0px", marginRight: "0px" }} justify={"end"}>
                                 {links?.map((item: any) => {
                                     console.log(item, "itemm")
@@ -133,9 +138,13 @@ background-color:#87CFEA !important;
 }
 .footer-left-text{
     font-weight:700;
-    font-size:19px;
-    /* color:#9d129d; */
-    /* color:#FF00FF; */
+    font-size:16px;
+    color:#1E90FF;
+}
+.footer-email-text{
+    cursor: pointer;
+    font-weight:700;
+    font-size:16px;
     color:#1E90FF;
 }
 .social-icon{
@@ -257,12 +266,21 @@ background-color:#87CFEA !important;
 @media screen and (max-width: 768px) {
     .footer-left-text{
         font-weight:500;
-        font-size:19px;
+        font-size:16px;
         text-align: center;
         display:flex;
         justify-content:center;
         align-items:center;
     }
+    .footer-email-text{
+        font-weight:500;
+        font-size:16px;
+        text-align: center;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        padding-bottom: 5px;
+}
     .social-icon-container{
         display:flex;
         justify-content:center;
@@ -276,12 +294,12 @@ background-color:#87CFEA !important;
     /* width: 300px; */
 }
 .icon-text {
-    font-size: 11px;
-    bottom: 74px;
+    font-size: 18px;
+    bottom: 67px;
 }
 
 .icon-text-signup{
-    font-size: 16px;
+    font-size: 17px;
     bottom: 46px;
 }
 
