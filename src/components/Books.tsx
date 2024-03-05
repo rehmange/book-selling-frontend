@@ -11,9 +11,7 @@ const Books = () => {
   useEffect(() => {
     const getBooks = async () => {
       setLoading(true);
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_SERVER_URL}/book`
-      );
+      const { data } = await axios.get(`${import.meta.env.VITE_SERVER_URL}/book`);
       setBooksData(data?.data);
       setLoading(false);
     };
@@ -23,19 +21,8 @@ const Books = () => {
     <BooksStyled>
       <Row className="books-Container">
         {loading ? (
-          <Row
-            style={{ width: "100%", height: "100%" }}
-            justify={"center"}
-            align={"middle"}
-          >
-            <Spin
-              indicator={
-                <LoadingOutlined
-                  style={{ fontSize: 50, color: "var(--app-primary-color)" }}
-                  spin
-                />
-              }
-            />
+          <Row style={{ width: "100%", height: "100%" }} justify={"center"} align={"middle"}>
+            <Spin indicator={<LoadingOutlined style={{ fontSize: 50, color: "var(--app-primary-color)" }} spin />} />
           </Row>
         ) : (
           <>
@@ -55,35 +42,24 @@ const Books = () => {
               {booksData?.map((book: any) => {
                 return (
                   <Col md={8} xs={24}>
-                    <Row justify={"center"}>
-                      <Col span={24} className="productImg">
-                        <Row
-                          justify={"center"}
-                          align={"middle"}
-                          style={{ height: "100%" }}
-                        >
-                          <img
-                            src={book?.ImageLink?.split(",")?.at(0)}
-                            className="bookImg"
-                          />
-                        </Row>
-                      </Col>
-                      <Col span={24} className="book-name">
-                        <span className="book-name-title">{book?.Title}</span>
-                      </Col>
-                      <Col span={24} className="book-price">
-                        <strong>MSRP</strong>: ${book?.Price} |{" "}
-                        <Link
-                          className="book-price product-container"
-                          to={`/book/${book?.BookID}/${book?.Title?.replaceAll(
-                            " ",
-                            "-"
-                          )}`}
-                        >
-                          More Details
-                        </Link>
-                      </Col>
-                    </Row>
+                    <Link
+                      // className="book-price product-container"
+                      to={`/book/${book?.BookID}/${book?.Title?.replaceAll(" ", "-")}`}
+                    >
+                      <Row justify={"center"}>
+                        <Col span={24} className="productImg">
+                          <Row justify={"center"} align={"middle"} style={{ height: "100%" }}>
+                            <img src={book?.ImageLink?.split(",")?.at(0)} className="bookImg" />
+                          </Row>
+                        </Col>
+                        <Col span={24} className="book-name">
+                          <span className="book-name-title">{book?.Title}</span>
+                        </Col>
+                        <Col span={24} className="book-price">
+                          <strong>MSRP</strong>: ${book?.Price} | More Details
+                        </Col>
+                      </Row>
+                    </Link>
                   </Col>
                 );
               })}
@@ -120,7 +96,7 @@ const BooksStyled = styled.div`
   }
 
   .productImg {
-    background: #87cefa;
+    background: #fff;
     border-radius: 8px;
     height: 260px;
   }
@@ -128,7 +104,7 @@ const BooksStyled = styled.div`
   .book-name {
     margin-top: 5px;
 
-    background: #87cefa;
+    background: #fff;
     border-radius: 8px 8px 0px 0px;
 
     padding-left: 8px;
@@ -148,7 +124,7 @@ const BooksStyled = styled.div`
   .book-price {
     font-size: 17px;
     font-weight: 700;
-    background: #87cefa;
+    background: #fff;
     border-radius: 0px 0px 8px 8px;
     padding-left: 8px;
     color: white;

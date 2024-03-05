@@ -110,7 +110,7 @@ const AboutStyled = styled.div`
   .about-desc-1-text {
     border-radius: 8px !important;
     max-width: 710px;
-    background-color: #87cefa;
+    background-color: #fff;
     padding: 8px;
     font-weight: 1000;
     color: white;
@@ -135,7 +135,7 @@ const AboutStyled = styled.div`
   .about-desc-2-text {
     border-radius: 8px !important;
     max-width: 710px;
-    background-color: #87cefa;
+    background-color: #fff;
     padding: 8px;
     font-weight: 1000;
     color: white;
