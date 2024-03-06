@@ -56,7 +56,7 @@ const Books = () => {
                           <span className="book-name-title">{book?.Title}</span>
                         </Col>
                         <Col span={24} className="book-price">
-                          <strong>MSRP</strong>: ${book?.Price} | More Details
+                          <span>MSRP</span>: ${book?.Price} | More Details
                         </Col>
                       </Row>
                     </Link>
@@ -87,10 +87,10 @@ const BooksStyled = styled.div`
     font-family: "Protest Riot", sans-serif;
 
     color: white;
-    -webkit-text-fill-color: white;
+    -webkit-text-fill-color: #00008b;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #ff00ff;
-    text-fill-color: white;
+    text-fill-color: #00008b;
     text-stroke-width: 0.5px;
     text-stroke-color: #ff00ff;
   }
@@ -103,7 +103,7 @@ const BooksStyled = styled.div`
 
   .book-name {
     margin-top: 5px;
-
+    text-align: center;
     background: #fff;
     border-radius: 8px 8px 0px 0px;
 
@@ -112,29 +112,31 @@ const BooksStyled = styled.div`
 
   .book-name-title {
     font-size: 22px;
-    font-weight: 900;
-    -webkit-text-fill-color: white;
+    font-weight: 600;
+    color: #00008b;
+    /* -webkit-text-fill-color: #00008b;
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #ff00ff;
-    text-fill-color: white;
+    -webkit-text-stroke-color: #00008b;
+    text-fill-color: #00008b;
     text-stroke-width: 1px;
-    text-stroke-color: #ff00ff;
+    text-stroke-color: #00008b; */
   }
 
   .book-price {
-    font-size: 17px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 600;
     background: #fff;
     border-radius: 0px 0px 8px 8px;
     padding-left: 8px;
-    color: white;
-    -webkit-text-fill-color: white;
+    color: #00008b;
+    /* -webkit-text-fill-color: #00008b;
     -webkit-text-stroke-width: 0.7px;
-    -webkit-text-stroke-color: #ff00ff;
-    text-fill-color: white;
+    -webkit-text-stroke-color: #00008b;
+    text-fill-color: #00008b;
     text-stroke-width: 0.5px;
-    text-stroke-color: #ff00ff;
+    text-stroke-color: #00008b; */
     padding-bottom: 5px;
+    text-align: center;
   }
 
   .bookImg {

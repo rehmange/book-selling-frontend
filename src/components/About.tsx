@@ -91,10 +91,10 @@ const AboutStyled = styled.div`
     padding: 10px;
     font-size: 70px;
     color: white;
-    -webkit-text-fill-color: white;
+    -webkit-text-fill-color: #00008b;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #ff00ff;
-    text-fill-color: white;
+    text-fill-color: #00008b;
     text-stroke-width: 0.5px;
     text-stroke-color: #ff00ff;
   }
@@ -104,7 +104,6 @@ const AboutStyled = styled.div`
     font-family: cursive;
     width: 100%;
     text-align: center;
-    font-weight: 600;
     font-size: 23px;
   }
   .about-desc-1-text {
@@ -112,18 +111,11 @@ const AboutStyled = styled.div`
     max-width: 710px;
     background-color: #fff;
     padding: 8px;
-    font-weight: 1000;
-    color: white;
-    -webkit-text-fill-color: white;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #ff00ff;
-    text-fill-color: white;
-    text-stroke-width: 0.5px;
-    text-stroke-color: #ff00ff;
+    font-weight: 600;
+    color: #00008b;
   }
   .about-desc-2 {
     font-size: 23px;
-    font-weight: 1000;
     color: white;
     margin-top: 35px;
     font-family: cursive;
@@ -137,14 +129,8 @@ const AboutStyled = styled.div`
     max-width: 710px;
     background-color: #fff;
     padding: 8px;
-    font-weight: 1000;
-    color: white;
-    -webkit-text-fill-color: white;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #ff00ff;
-    text-fill-color: white;
-    text-stroke-width: 0.5px;
-    text-stroke-color: #ff00ff;
+    font-weight: 600;
+    color: #00008b;
   }
 
   .about-img {

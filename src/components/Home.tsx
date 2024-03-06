@@ -51,7 +51,7 @@ const Home = () => {
                     <Link to={`/book/${HomeData?.LeftBook?.id}/${HomeData?.LeftBook?.Title?.replaceAll(" ", "-")}`}>
                       <img src={HomeData?.LeftBook?.ImageLink} alt="image" /*  width={"250px"} */ className="bookImg" />
 
-                      <span className="book-more" style={{ marginTop: "-6px" }}>
+                      <span className="book-more" style={{ marginTop: "-7px" }}>
                         More Details
                       </span>
                     </Link>
@@ -70,7 +70,7 @@ const Home = () => {
                   <Row justify={"center"}>
                     <Link to={`/book/${HomeData?.LeftBook?.id}/${HomeData?.LeftBook?.Title?.replaceAll(" ", "-")}`}>
                       <img src={HomeData?.RightBook?.ImageLink} alt="image" className="bookImg" />
-                      <span className="book-more" style={{ marginTop: "-6px" }}>
+                      <span className="book-more" style={{ marginTop: "-7px" }}>
                         More Details
                       </span>
                     </Link>
@@ -87,7 +87,7 @@ const Home = () => {
                     <Col>
                       <Link to={`/book/${HomeData?.LeftBook?.id}/${HomeData?.LeftBook?.Title?.replaceAll(" ", "-")}`}>
                         <img src={HomeData?.BottomBook?.ImageLink} alt="image" className="bookImg" />
-                        <span className="book-more" style={{ marginTop: "-6px" }}>
+                        <span className="book-more" style={{ marginTop: "-7px" }}>
                           More Details
                         </span>
                       </Link>
@@ -121,10 +121,10 @@ const HomeStyled = styled.div`
     padding: 10px;
     font-size: 70px;
     color: white;
-    -webkit-text-fill-color: white;
+    -webkit-text-fill-color: #00008b;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #ff00ff;
-    text-fill-color: white;
+    text-fill-color: #00008b;
     text-stroke-width: 0.5px;
     text-stroke-color: #ff00ff;
   }
@@ -152,13 +152,13 @@ const HomeStyled = styled.div`
     background: #fff;
     border-radius: 0px 0px 8px 8px;
     padding-left: 0px;
-    color: white;
-    -webkit-text-fill-color: white;
+    color: #00008b;
+    -webkit-text-fill-color: #00008b;
     -webkit-text-stroke-width: 0.9px;
-    -webkit-text-stroke-color: #ff00ff;
+    -webkit-text-stroke-color: #00008b;
     text-fill-color: white;
     text-stroke-width: 0.9px;
-    text-stroke-color: #ff00ff;
+    text-stroke-color: #00008b;
     padding-bottom: 5px;
   }
 
